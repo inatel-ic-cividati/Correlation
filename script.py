@@ -4,8 +4,7 @@
 #   
 #   pip install beautifulsoup4
 
-#from urllib.request import urlopen -> funcoina no cmd
-#from urllib.2 import urlopen -> funciona no bash-linux
+from urllib.request import urlopen 
 
 from bs4 import BeautifulSoup as bs4
 #from datetime import datetime
@@ -39,9 +38,9 @@ def showValues(data):
     print ("Kr:", data.Kr)
     print ("Tw:", data.Tw)
 
-#def fancyValues(data):
-#   print '|    T   |    Us   |    Eu   |    Ch   |    Kr   |    Tw   |'
-#   print '|',data.t,'|',data.Us,'|', data.Eu,'|', data.Ch,'|', data.Kr,'|', data.Tw,'|'
+def fancyValues(data):
+    print ('|    T   |    Us   |    Eu   |    Ch   |    Kr   |    Tw   |')
+    print ('|',data.t,'|',data.Us,'|', data.Eu,'|', data.Ch,'|', data.Kr,'|', data.Tw,'|')
 
 while (True):
     try:
