@@ -1,14 +1,17 @@
 #   Dev: Amor
 #
-#   Run in cmd:
+#   Requirements:
 #   
 #   pip install beautifulsoup4
 
-from urllib2 import urlopen
-from bs4 import BeautifulSoup
-#import datetime
+#from urllib.request import urlopen -> funcoina no cmd
+#from urllib.2 import urlopen -> funciona no bash-linux
+
+from bs4 import BeautifulSoup as bs4
+#from datetime import datetime
 
 class data:
+    t = ''
     Us = ''
     Eu = ''
     Ch = ''
@@ -18,10 +21,10 @@ class data:
 def getToken(data):
     url = 'https://wowtokenprices.com/'
     page = urlopen(url)
-    soup = BeautifulSoup(page, 'html.parser')
+    soup = bs4(page, 'html.parser')
    
     aBox = soup.find_all('p', attrs={'class': 'money-text'})
-
+    #data.t = str(datetime.datetime.now().time())
     data.Us = aBox[0].text.strip() # North America
     data.Eu = aBox[1].text.strip() # Europe
     data.Ch = aBox[2].text.strip() # China
@@ -29,16 +32,22 @@ def getToken(data):
     data.Tw = aBox[4].text.strip() # Taiwan
     
 def showValues(data):
-    print "US:", data.Us
-    print "Eu:", data.Eu
-    print "Ch:", data.Ch
-    print "Kr:", data.Kr
-    print "Tw:", data.Tw
+    #print ('T :',data.t)
+    print ("US:", data.Us)
+    print ("Eu:", data.Eu)
+    print ("Ch:", data.Ch)
+    print ("Kr:", data.Kr)
+    print ("Tw:", data.Tw)
 
-def fancyValues(data):
-    print '|    Us   |    Eu   |    Ch   |    Kr   |    Tw   |'
-    print '|',data.Us,'|', data.Eu,'|', data.Ch,'|', data.Kr,'|', data.Tw,'|'
+#def fancyValues(data):
+#   print '|    T   |    Us   |    Eu   |    Ch   |    Kr   |    Tw   |'
+#   print '|',data.t,'|',data.Us,'|', data.Eu,'|', data.Ch,'|', data.Kr,'|', data.Tw,'|'
 
 while (True):
-    getToken(data)
-    fancyValues(data)
+    try:
+        print (data.t)
+        getToken(data)
+        showValues(data)
+        #fancyValues(data)
+    except:
+        print ('Error')
