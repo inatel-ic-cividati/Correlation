@@ -11,3 +11,10 @@ The following libraries were used in the project:
 - [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/) -> Beautiful Soup is a library that makes it easy to scrape information from web pages.
 - [datetime](https://docs.python.org/3/library/datetime.html) -> Get current date and time
 - [time](https://docs.python.org/3/library/time.html) -> To wait 
+
+## Authors
+### Advisor
+- Marcelo V. C. Aragão (https://github.com/marcelovca90)
+
+### Students
+- Rubens Cividati (https://github.com/cividati)
