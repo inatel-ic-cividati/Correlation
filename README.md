@@ -5,7 +5,9 @@ This is a Scientific Iniciation from National Institue of Telecomunication
 ## Used Libraries:
 
 The following libraries were used in the project:
-- [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/) -> Beautiful Soup is a library that makes it easy to scrape information from web pages. It sits atop an HTML or XML parser, providing Pythonic idioms for iterating, searching, and modifying the parse tree. 
-- 
+
 - [Sqlite3](https://docs.python.org/3/library/sqlite3.html) -> Used for create db and make changes
-- 
+- [urlopen](https://docs.python.org/3/library/urllib.request.html) -> Defines functions and classes which help in opening URLs
+- [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/) -> Beautiful Soup is a library that makes it easy to scrape information from web pages.
+- [datetime](https://docs.python.org/3/library/datetime.html) -> Get current date and time
+- [time](https://docs.python.org/3/library/time.html) -> To wait 
