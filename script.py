@@ -89,7 +89,7 @@ def main():
             insertData(data)
             fancyValues(data)
             #sleep 20 minuts
-            time.sleep(1800)
+            time.sleep(1200)
             
         except Exception as e:
             print ('Problem in main()')
