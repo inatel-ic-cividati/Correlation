@@ -1,7 +1,9 @@
 import sqlite3
 
 def setDatabase(): 
-
+    conn = sqlite3.connect('wow.db')
+    cursor = conn.cursor()
+    
     cursor.execute("""
     CREATE TABLE wowtoken(
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
