@@ -2,6 +2,7 @@ import sqlite3
 
 def setDatabase(): 
     conn = sqlite3.connect('wow.db')
+    print ('database wow.db created sucessfully!')
     cursor = conn.cursor()
     
     cursor.execute("""
@@ -17,16 +18,6 @@ def setDatabase():
     );
     """)
     print('Table wowtoken created sucessfully!')
-
-    cursor.execute("""
-    CREATE TABLE log(
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-        date TEXT NOT NULL,
-        time TEXT NOT NULL,
-        message TEXT
-    );
-    """)
-    print ('Table log created sucessfully!')
 
     conn.close()
 
