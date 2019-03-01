@@ -1,8 +1,4 @@
 #   Dev: Amor
-#
-#   Requirements:
-#   
-#   pip install beautifulsoup4
 
 import sqlite3
 from urllib.request import urlopen 
@@ -13,11 +9,11 @@ import time
 conn = sqlite3.connect('wow.db')
 cursor = conn.cursor()
 
-
 class data:
 
     date = ''
     time = ''
+    message = ''
     Us = ''
     Eu = ''
     Ch = ''
@@ -38,43 +34,68 @@ def setDatabase():
         Tw TEXT NOT NULL
     );
     """)
-    print('Table created sucessfully')
+    print('Table wowtoken created sucessfully!')
 
-def insertDatabase(data):
-    try:
-        
+    cursor.execute("""
+    CREATE TABLE log(
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        date TEXT NOT NULL,
+        time TEXT NOT NULL,
+        message TEXT
+    );
+    """)
+    print ('Table log created sucessfully!')
+
+def insertData(data):
+
+    try:  
         values = data.date, data.time, data.Us ,data.Eu, data.Ch, data.Kr, data.Tw
         cursor.execute("""
         INSERT INTO wowtoken (date, time, Us, Eu, Ch, Kr, Tw)
         VALUES """+str(values)+"""
         """)
         conn.commit()
-        print (data.time +' - Data inserted')
+        print ('Data inserted at '+data.time)
+        data.message = ''
 
     except Exception as e:
-        print('Problem in inserDatabase()!')
-        print('Exception: ', e)
+        data.message = str(e)
+        print ('Problem in insertData()!')
+        print ('Exception: ', e)
+        values = data.date, data.time, data.message
+        cursor.execute("""
+        INSERT INTO log (date, time, message)
+        VALUES """+str(values)+"""
+        """)
+        conn.commit()
 
 def getToken(data):
 
-    url = 'https://wowtokenprices.com/'
-    page = urlopen(url)
-    soup = bs4(page, 'html.parser')
-   
-    aBox = soup.find_all('p', attrs={'class': 'money-text'})
-    
     data.date = datetime.now().strftime("%m/%d/%Y")
     data.time = datetime.now().strftime("%H:%M:%S")
-    data.Us = aBox[0].text.strip() # North America
-    data.Eu = aBox[1].text.strip() # Europe
-    data.Ch = aBox[2].text.strip() # China
-    data.Kr = aBox[3].text.strip() # Korean
-    data.Tw = aBox[4].text.strip() # Taiwan
+    try:
+        url = 'https://wowtokenprices.com/'
+        page = urlopen(url)
+        soup = bs4(page, 'html.parser')
     
+        aBox = soup.find_all('p', attrs={'class': 'money-text'})
+        
+        data.Us = aBox[0].text.strip() # North America
+        data.Eu = aBox[1].text.strip() # Europe
+        data.Ch = aBox[2].text.strip() # China
+        data.Kr = aBox[3].text.strip() # Korean
+        data.Tw = aBox[4].text.strip() # Taiwan
+
+    except Exception as e:
+        print ('Problem in getToken()!')
+        print ('Exception: ',e)
+        data.message = str(e)
+
 def showValues(data):
 
     print ("time:", data.time)
     print ("date:", data.date)
+    print ("message:", data.message)
     print ("US:", data.Us)
     print ("Eu:", data.Eu)
     print ("Ch:", data.Ch)
@@ -88,18 +109,19 @@ def fancyValues(data):
 
 def main():
 
+    setDatabase()
+
     while (True):
         try:
             getToken(data)
-            insertDatabase(data)
+            insertData(data)
             fancyValues(data)
             #sleep 20 minuts
-            #time.sleep(1800)
+            time.sleep(1800)
             
         except Exception as e:
-            print ('Problme in main()')
+            print ('Problem in main()')
             print ('Exception: ',e)
             conn.close()
-            break
-
+            
 main()
