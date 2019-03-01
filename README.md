@@ -1,4 +1,4 @@
-# wow-addon
+# Time series forecasting tool
 This is a Scientific Iniciation from National Institue of Telecomunication
 
 
