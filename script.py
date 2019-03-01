@@ -20,6 +20,32 @@ class data:
     Kr = ''
     Tw = ''
 
+def setDatabase(): 
+
+    cursor.execute("""
+    CREATE TABLE wowtoken(
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        date TEXT NOT NULL,
+        time TEXT NOT NULL,
+        Us TEXT NOT NULL,
+        Eu TEXT NOT NULL,
+        Ch TEXT NOT NULL,
+        Kr TEXT NOT NULL,
+        Tw TEXT NOT NULL
+    );
+    """)
+    print('Table wowtoken created sucessfully!')
+
+    cursor.execute("""
+    CREATE TABLE log(
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        date TEXT NOT NULL,
+        time TEXT NOT NULL,
+        message TEXT
+    );
+    """)
+    print ('Table log created sucessfully!')
+
 def insertData(data):
 
     try:  
@@ -83,17 +109,19 @@ def fancyValues(data):
 
 def main():
 
-    while (True):
-        try:
+    attempts = 0
+    while (attempts < 10):
+       attempts++
+       try:
             getToken(data)
             insertData(data)
             fancyValues(data)
-            #sleep 20 minuts
-            time.sleep(1200)
+            break
             
         except Exception as e:
             print ('Problem in main()')
             print ('Exception: ',e)
-            conn.close()
+            time.sleep(30)
+    conn.close()
             
 main()
