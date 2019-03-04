@@ -6,14 +6,13 @@ from bs4 import BeautifulSoup as bs4
 from datetime import datetime
 import time
 
-conn = sqlite3.connect('wow.db')
+conn = sqlite3.connect('/home/rubens_cividati_teles/wow.db')
 cursor = conn.cursor()
 
 class data:
 
     date = ''
     time = ''
-    message = ''
     Us = ''
     Eu = ''
     Ch = ''
@@ -35,16 +34,8 @@ def setDatabase():
     );
     """)
     print('Table wowtoken created sucessfully!')
-
-    cursor.execute("""
-    CREATE TABLE log(
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-        date TEXT NOT NULL,
-        time TEXT NOT NULL,
-        message TEXT
-    );
-    """)
-    print ('Table log created sucessfully!')
+    
+    return True
 
 def insertData(data):
 
@@ -55,24 +46,21 @@ def insertData(data):
         VALUES """+str(values)+"""
         """)
         conn.commit()
-        print ('Data inserted at '+data.time)
-        data.message = ''
+        print (data.date+' - '+data.time+' Data inserted.')
+
+        return True
 
     except Exception as e:
-        data.message = str(e)
-        print ('Problem in insertData()!')
+        print (data.date+' - '+data.time+' Problem in insertData().')
         print ('Exception: ', e)
-        values = data.date, data.time, data.message
-        cursor.execute("""
-        INSERT INTO log (date, time, message)
-        VALUES """+str(values)+"""
-        """)
-        conn.commit()
+
+        return False
 
 def getToken(data):
 
     data.date = datetime.now().strftime("%m/%d/%Y")
     data.time = datetime.now().strftime("%H:%M:%S")
+
     try:
         url = 'https://wowtokenprices.com/'
         page = urlopen(url)
@@ -86,16 +74,18 @@ def getToken(data):
         data.Kr = aBox[3].text.strip() # Korean
         data.Tw = aBox[4].text.strip() # Taiwan
 
+        return True
+
     except Exception as e:
-        print ('Problem in getToken()!')
+        print (data.date+' - '+data.time+' Problem in getToken()!')
         print ('Exception: ',e)
-        data.message = str(e)
+
+        return False
 
 def showValues(data):
 
     print ("time:", data.time)
     print ("date:", data.date)
-    print ("message:", data.message)
     print ("US:", data.Us)
     print ("Eu:", data.Eu)
     print ("Ch:", data.Ch)
@@ -108,20 +98,17 @@ def fancyValues(data):
     print ('|',data.Us,'|', data.Eu,'|', data.Ch,'|', data.Kr,'|', data.Tw,'|')
 
 def main():
+    
+    while getToken(data)==False:
+        print (data.date + ' - ' + data.time +' - Sleeping 30s...')
+        time.sleep(30)
+        getToken(data)
+        
+    insertData(data)
 
-    attempts = 0
-    while (attempts < 10):
-       attempts++
-       try:
-            getToken(data)
-            insertData(data)
-            fancyValues(data)
-            break
-            
-        except Exception as e:
-            print ('Problem in main()')
-            print ('Exception: ',e)
-            time.sleep(30)
+    #fancyValues(data)
     conn.close()
-            
-main()
+
+#main()
+while True:
+    main()
