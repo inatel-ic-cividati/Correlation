@@ -109,6 +109,4 @@ def main():
     #fancyValues(data)
     conn.close()
 
-#main()
-while True:
-    main()
+main()
