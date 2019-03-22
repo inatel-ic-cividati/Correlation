@@ -14,8 +14,6 @@ The following libraries were used in the project:
 - [BeautifulSoup4](https://pypi.org/project/beautifulsoup4/) -> Beautiful Soup is a library that makes it easy to scrape information from web pages.
 - [datetime](https://docs.python.org/3/library/datetime.html) -> Get current date and time
 - [time](https://docs.python.org/3/library/time.html) -> To wait 
-- [yahoo-finance 1.4.0](https://pypi.org/project/yahoo-finance/) -> actions values
-- [CurrencyConverter 0.13.8](https://pypi.org/project/CurrencyConverter/) -> Get current currency
 ## Authors
 ### Advisor
 - Marcelo V. C. Aragão (https://github.com/marcelovca90)
