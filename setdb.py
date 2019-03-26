@@ -1,9 +1,9 @@
 import sqlite3
 
+conn = sqlite3.connect('wow.db')
+cursor = conn.cursor()
+
 def setDatabase(): 
-    conn = sqlite3.connect('wow.db')
-    print ('database wow.db created sucessfully!')
-    cursor = conn.cursor()
     
     cursor.execute("""
     CREATE TABLE wowtoken(
@@ -19,6 +19,21 @@ def setDatabase():
     """)
     print('Table wowtoken created sucessfully!')
 
-    conn.close()
+def updateDatabase ():
+    
+    cursor.execute("""
+    CREATE TABLE currency(
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        date TEXT NOT NULL,
+        time TEXT NOT NULL,
+        Usd TEXT NOT NULL,
+        Eur TEXT NOT NULL,
+        Cny TEXT NOT NULL,
+        Krw TEXT NOT NULL
+    );
+    """)
+    print('Table currency created sucessfully!')
 
 setDatabase()
+
+conn.close()
