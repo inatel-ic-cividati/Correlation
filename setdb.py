@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('wow.db')
+conn = sqlite3.connect('/home/rubens_cividati_teles/wow.db')
 cursor = conn.cursor()
 
 def setDatabase(): 
