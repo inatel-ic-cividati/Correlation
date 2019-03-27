@@ -4,62 +4,115 @@ import sqlite3
 from urllib.request import urlopen 
 from bs4 import BeautifulSoup as bs4
 from datetime import datetime
-import time
+import time as t
+import json
+import requests
 
-conn = sqlite3.connect('/home/rubens_cividati_teles/wow.db')
+#linux diretory -> /home/rubens_cividati_teles/
+conn = sqlite3.connect('wow.db')
 cursor = conn.cursor()
 
-class data:
+date = datetime.now().strftime("%m/%d/%Y")
+time = ''
 
-    date = ''
-    time = ''
+dateDict = {
+
+    "Jan": "01",
+    "Feb": "02",
+    "Mar": "03",
+    "Apr": "04",
+    "May": "05",
+    "Jun": "06",
+    "Jul": "07",
+    "Aug": "08",
+    "Set": "09",
+    "Oct": "10",
+    "Nov": "11",
+    "Dec": "12",
+}
+
+class Token:
+    
+    Date = datetime.now().strftime("%m/%d/%Y")
+    Time = datetime.now().strftime("%H:%M:%S")
     Us = ''
     Eu = ''
     Ch = ''
     Kr = ''
     Tw = ''
 
-def setDatabase(): 
+class Currency:
 
-    cursor.execute("""
-    CREATE TABLE wowtoken(
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-        date TEXT NOT NULL,
-        time TEXT NOT NULL,
-        Us TEXT NOT NULL,
-        Eu TEXT NOT NULL,
-        Ch TEXT NOT NULL,
-        Kr TEXT NOT NULL,
-        Tw TEXT NOT NULL
-    );
-    """)
-    print('Table wowtoken created sucessfully!')
-    
-    return True
+    Date = ''
+    Time = ''
+    Usd = ''
+    Eur = ''
+    Cny = ''
+    Krw = ''
+    #Tw = ''
 
-def insertData(data):
+
+def insertData(Token, Currency):
 
     try:  
-        values = data.date, data.time, data.Us ,data.Eu, data.Ch, data.Kr, data.Tw
+
+        #   insert Token
+        values = Token.Date, Token.Time, Token.Us ,Token.Eu, Token.Ch, Token.Kr, Token.Tw
         cursor.execute("""
         INSERT INTO wowtoken (date, time, Us, Eu, Ch, Kr, Tw)
         VALUES """+str(values)+"""
         """)
         conn.commit()
-        print (data.date+' - '+data.time+' Data inserted.')
+
+        #   insert Currency 
+        values = Currency.Date, Currency.Time, Currency.Usd, Currency.Eur, Currency.Cny, Currency.Krw
+        cursor.execute("""
+        INSERT INTO currency (date, time, Usd, Eur, Cny, Krw)
+        VALUES """+str(values)+"""
+        """)
+        conn.commit()
+
+        print (Token.Date+' - '+Token.Time+' Data inserted.')
 
         return True
 
     except Exception as e:
-        print (data.date+' - '+data.time+' Problem in insertData().')
+        print (Token.date+' - '+Token.time+' Problem in insertData().')
         print ('Exception: ', e)
 
         return False
 
-def getToken(data):
+def setCurrency(Currency):
+    
+    try:
+        r = requests.get('https://api.exchangeratesapi.io/latest?symbols=USD,EUR,CNY,KRW&base=USD')
+        
+        dateModel = (r.headers['Date'])[5:16]
+        dateSplitted = dateModel.split()
+        dateModel = dateDict[dateSplitted[1]] + "/" + dateSplitted[0] + "/" + dateSplitted[2]
+        timeModel = (r.headers['Date'])[17:25]
+        
+        js = r.json()
 
-    data.date = datetime.now().strftime("%m/%d/%Y")
-    data.time = datetime.now().strftime("%H:%M:%S")
+        Currency.Usd = '1'
+        Currency.Eur = js["rates"]["EUR"]
+        Currency.Cny = js["rates"]["CNY"]
+        Currency.Krw = js["rates"]["KRW"]
+        Currency.Time = timeModel
+        Currency.Date = dateModel
+
+        return True
+
+    except Exception as e:
+        print (Token.Date+' - '+Token.Time+' Problem in setCurrency()!')
+        print ('Exception: ',e)
+
+        return False
+
+def setToken(Token):
+
+    Token.Date = datetime.now().strftime("%m/%d/%Y")
+    Token.Time = datetime.now().strftime("%H:%M:%S")
 
     try:
         url = 'https://wowtokenprices.com/'
@@ -68,45 +121,68 @@ def getToken(data):
     
         aBox = soup.find_all('p', attrs={'class': 'money-text'})
         
-        data.Us = aBox[0].text.strip() # North America
-        data.Eu = aBox[1].text.strip() # Europe
-        data.Ch = aBox[2].text.strip() # China
-        data.Kr = aBox[3].text.strip() # Korean
-        data.Tw = aBox[4].text.strip() # Taiwan
+        Token.Us = aBox[0].text.strip() # North America
+        Token.Eu = aBox[1].text.strip() # Europe
+        Token.Ch = aBox[2].text.strip() # China
+        Token.Kr = aBox[3].text.strip() # Korean
+        Token.Tw = aBox[4].text.strip() # Taiwan
 
         return True
 
     except Exception as e:
-        print (data.date+' - '+data.time+' Problem in getToken()!')
+        print (Token.Date+' - '+Token.Time+' Problem in setToken()!')
         print ('Exception: ',e)
 
         return False
 
-def showValues(data):
-
-    print ("time:", data.time)
-    print ("date:", data.date)
-    print ("US:", data.Us)
-    print ("Eu:", data.Eu)
-    print ("Ch:", data.Ch)
-    print ("Kr:", data.Kr)
-    print ("Tw:", data.Tw)
-
-def fancyValues(data):
-
-    print ('|    Us   |    Eu   |    Ch   |    Kr   |    Tw   |')
-    print ('|',data.Us,'|', data.Eu,'|', data.Ch,'|', data.Kr,'|', data.Tw,'|')
-
 def main():
     
-    while getToken(data)==False:
-        print (data.date + ' - ' + data.time +' - Sleeping 30s...')
-        time.sleep(30)
-        getToken(data)
-        
-    insertData(data)
+    count = 0
+    bol = True
+    while bol:
 
-    #fancyValues(data)
+        count +=1
+
+        date = datetime.now().strftime("%m/%d/%Y")
+        time = datetime.now().strftime("%H:%M:%S")     
+
+        if count >5:
+
+            print (date + ' - ' + time +' - setToken() failed, breaking')    
+            bol = False
+
+        if setToken(Token):
+
+            bol = False
+        else:
+            
+            print (date + ' - ' + time +' - setToken() failed, attempt', count ,'- Sleeping 30s...')
+            t.sleep(30)  
+
+    count = 0
+    bol = True
+    while bol:
+
+        count +=1
+
+        date = datetime.now().strftime("%m/%d/%Y")
+        time = datetime.now().strftime("%H:%M:%S")     
+
+        if count >5:
+
+            print (date + ' - ' + time +' - setCurrency() failed, breaking')    
+            bol = False
+
+        if setCurrency(Currency):
+
+            bol = False
+        else:
+            
+            print (date + ' - ' + time +' - setCurrency() failed, attempt', count ,'- Sleeping 30s...')
+            t.sleep(30)   
+
+    insertData(Token, Currency)
+
     conn.close()
 
 main()
