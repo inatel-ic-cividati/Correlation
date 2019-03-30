@@ -9,7 +9,7 @@ import json
 import requests
 
 #linux diretory -> /home/rubens_cividati_teles/
-conn = sqlite3.connect('wow.db')
+conn = sqlite3.connect('/home/rubens_cividati_teles/wow.db')
 cursor = conn.cursor()
 
 date = datetime.now().strftime("%m/%d/%Y")
