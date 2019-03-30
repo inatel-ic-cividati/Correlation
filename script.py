@@ -49,7 +49,7 @@ class Currency:
     Eur = ''
     Cny = ''
     Krw = ''
-    #Tw = ''
+    Brl = ''
 
 
 def insertData(Token, Currency):
@@ -65,9 +65,9 @@ def insertData(Token, Currency):
         conn.commit()
 
         #   insert Currency 
-        values = Currency.Date, Currency.Time, Currency.Usd, Currency.Eur, Currency.Cny, Currency.Krw
+        values = Currency.Date, Currency.Time, Currency.Usd, Currency.Eur, Currency.Cny, Currency.Krw, Currency.Brl
         cursor.execute("""
-        INSERT INTO currency (date, time, Usd, Eur, Cny, Krw)
+        INSERT INTO currency (date, time, Usd, Eur, Cny, Krw, Brl)
         VALUES """+str(values)+"""
         """)
         conn.commit()
@@ -85,7 +85,7 @@ def insertData(Token, Currency):
 def setCurrency(Currency):
     
     try:
-        r = requests.get('https://api.exchangeratesapi.io/latest?symbols=USD,EUR,CNY,KRW&base=USD')
+        r = requests.get('https://api.exchangeratesapi.io/latest?symbols=USD,BRL,EUR,CNY,KRW&base=USD')
         
         dateModel = (r.headers['Date'])[5:16]
         dateSplitted = dateModel.split()
@@ -98,6 +98,7 @@ def setCurrency(Currency):
         Currency.Eur = js["rates"]["EUR"]
         Currency.Cny = js["rates"]["CNY"]
         Currency.Krw = js["rates"]["KRW"]
+        Currency.Brl =  js["rates"]["BRL"]
         Currency.Time = timeModel
         Currency.Date = dateModel
 
@@ -107,7 +108,7 @@ def setCurrency(Currency):
         print (Token.Date+' - '+Token.Time+' Problem in setCurrency()!')
         print ('Exception: ',e)
 
-        return False
+        return e
 
 def setToken(Token):
 
@@ -133,53 +134,53 @@ def setToken(Token):
         print (Token.Date+' - '+Token.Time+' Problem in setToken()!')
         print ('Exception: ',e)
 
-        return False
+        return e
 
 def main():
     
-    count = 0
-    bol = True
-    while bol:
+    attempt = 0
+    isTrying = True
+    while isTrying:
 
-        count +=1
+        attempt +=1
 
         date = datetime.now().strftime("%m/%d/%Y")
-        time = datetime.now().strftime("%H:%M:%S")     
-
-        if count >5:
-
-            print (date + ' - ' + time +' - setToken() failed, breaking')    
-            bol = False
+        time = datetime.now().strftime("%H:%M:%S")       
 
         if setToken(Token):
 
-            bol = False
+            isTrying = False
         else:
             
-            print (date + ' - ' + time +' - setToken() failed, attempt', count ,'- Sleeping 30s...')
-            t.sleep(30)  
+            print (date + ' - ' + time +' - setToken() failed, attempt', attempt ,'- Sleeping 30s...')
+            t.sleep(30)   
 
-    count = 0
-    bol = True
-    while bol:
+        if attempt >5:
 
-        count +=1
+            print (date + ' - ' + time +' - setToken() failed, breaking')    
+            isTrying = False
+
+    attempt = 0
+    isTrying = True
+    while isTrying:
+
+        attempt +=1
 
         date = datetime.now().strftime("%m/%d/%Y")
-        time = datetime.now().strftime("%H:%M:%S")     
-
-        if count >5:
-
-            print (date + ' - ' + time +' - setCurrency() failed, breaking')    
-            bol = False
+        time = datetime.now().strftime("%H:%M:%S")       
 
         if setCurrency(Currency):
 
-            bol = False
+            isTrying = False
         else:
             
-            print (date + ' - ' + time +' - setCurrency() failed, attempt', count ,'- Sleeping 30s...')
+            print (date + ' - ' + time +' - setCurrency() failed, attempt', attempt ,'- Sleeping 30s...')
             t.sleep(30)   
+
+        if attempt >5:
+
+            print (date + ' - ' + time +' - setCurrency() failed, breaking')    
+            isTrying = False
 
     insertData(Token, Currency)
 
