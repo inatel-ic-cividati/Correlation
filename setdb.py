@@ -17,10 +17,7 @@ def setDatabase():
         Tw TEXT NOT NULL
     );
     """)
-    print('Table wowtoken created sucessfully!')
 
-def updateDatabase ():
-    
     cursor.execute("""
     CREATE TABLE currency(
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -32,8 +29,18 @@ def updateDatabase ():
         Krw TEXT NOT NULL
     );
     """)
-    print('Table currency created sucessfully!')
 
-setDatabase()
+    print('Table wowtoken created sucessfully!')
+
+def updateDatabase ():
+    
+    cursor.execute("""
+    ALTER TABLE currency
+
+        ADD Brl TEXT 
+    ;
+    """)
+
+updateDatabase()
 
 conn.close()
