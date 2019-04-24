@@ -20,3 +20,7 @@ The following libraries were used in the project:
 
 ### Students
 - Rubens Cividati (https://github.com/cividati)
+
+### Contributors
+- Daniel Pontello (https://github.com/danielpontello)
+
