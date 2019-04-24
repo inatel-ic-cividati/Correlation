@@ -6,8 +6,6 @@ import seaborn as sns
 from datetime import datetime
 sns.set(style="darkgrid")
  
-
-
 def convertStrFlt(dataFrame, name):
     
     # converting str to float
@@ -41,7 +39,7 @@ def convertStrDate(dataFrame):
 def main():
 
     conn = sqlite3.connect('wow.db')
-    query = 'SELECT * FROM wowtoken WHERE id <= 20 and Us != "";'
+    query = 'SELECT * FROM wowtoken WHERE Us != "";'
     df = pd.read_sql_query(query,conn)
 
     convertStrFlt(df, 'Us')
@@ -50,13 +48,12 @@ def main():
     convertStrFlt(df, 'Tw')
     convertStrFlt(df, 'Kr')
     convertStrDate(df)
-    df = df.drop(columns='time')
-    df = df.drop(columns='id')
-    df = df.drop(columns='date')
+
+    df = df.drop(['time', 'date', 'id'], axis = 1)
     
-    #print (df)
+    print (df)
     
     g = sns.lineplot(data=df,palette='tab10',linewidth=2.5)
-
+    plt.show()
 
 main()
