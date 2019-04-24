@@ -1,8 +1,0 @@
-Us = 1
-Eu = (EUR=X) = Eur = Euro = https://fred.stlouisfed.org/series/DEXUSEU
-Ch = (CNY=X) = RMB = Renminbi = https://fred.stlouisfed.org/series/EXCHUS
-Kr = (KRW=X) = KRW = Won sul-coreano = https://fred.stlouisfed.org/series/EXKOUS
-Tw = (TWD=X) = TWD = New Taiwan dollar = https://fred.stlouisfed.org/series/EXTAUS
- 
- 
-BRL  = https://fred.stlouisfed.org/series/EXBZUSbom
