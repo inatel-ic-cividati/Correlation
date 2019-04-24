@@ -23,4 +23,5 @@ The following libraries were used in the project:
 
 ### Contributors
 - Daniel Pontello (https://github.com/danielpontello)
+- Isabella Capistrano
 
