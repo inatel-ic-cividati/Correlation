@@ -1,5 +1,5 @@
 # Time series forecasting tool
-This is a Scientific Iniciation from National Institue of Telecomunication
+This is a Scientific Iniciation from National Institue of Telecomunication. It cannot provide the data, but can show you how to get it.
 
 # Auxiliar tools
 
