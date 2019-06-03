@@ -9,7 +9,7 @@ This is a Scientific Iniciation from National Institue of Telecomunication. It c
 
 The following libraries were used in the project:
 - [pandas 0.24.2](https://pandas.pydata.org) -> pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language)
-- [pandas_datareader==0.7.0](https://pandas-datareader.readthedocs.io)
+- [pandas_datareader 0.7.0](https://pandas-datareader.readthedocs.io)
 - [requests 2.22.0](https://2.python-requests.org/en/master/) -> Requests allows you to send organic, grass-fed HTTP/1.1 requests, without the need for manual labor.
 - [numpy 1.16.3](https://www.numpy.org/) -> NumPy is the fundamental package for scientific computing with Python
 - [matplotlib 3.0.3](https://matplotlib.org) -> Matplotlib is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.
