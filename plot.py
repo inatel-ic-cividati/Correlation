@@ -3,7 +3,7 @@ import sqlite3
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
-plt.style.use('dark_background')
+#plt.style.use('dark_background')
  
 def convertStrFlt(dataFrame, name):
     
@@ -58,11 +58,11 @@ def main():
     dfCurrency = dfCurrency.drop(['time','id','date'], axis = 1)
 
     # PARAMS
-    yColor = '#00FFFF' # #00FFFF -> BLUE
-    xColor = '#FF1493' # #FF1493 -> PINK
+    currencyColor = '#0000FF' # #00FFFF -> BLUE
+    wowTokenColor = '#FF0000' # #FF1493 -> PINK
     xRotation = 20
 
-    op = 1
+    op = 2
 
     if op == 0:
         country = 'Us'
@@ -80,22 +80,14 @@ def main():
         country = 'Eu'
         currency = 'Brl'
 
-    plt.subplot(2,1,1)
-    plt.plot(dfWowtoken[country], label=country, color = yColor)
-    plt.xlabel('Time', color = xColor)
-    plt.xticks(rotation = xRotation, color = xColor)
-    plt.yticks(color = yColor)
-    plt.ylabel('Value', color = yColor)
-    plt.legend()
-
-    plt.subplot(2,1,2)
-    plt.plot(dfCurrency[currency], label=currency, color = yColor)
-    plt.xlabel('Time', color = xColor)
-    plt.xticks(rotation = xRotation, color = xColor)
-    plt.yticks(color = yColor)
-    plt.ylabel('Value', color = yColor)
-    plt.legend()
-  
+    axCurrency = plt.subplot()
+    axToken = axCurrency.twinx()
+    axToken.plot(dfWowtoken[country], label=country, color = wowTokenColor)
+    axCurrency.plot(dfCurrency[currency], label=currency, color = currencyColor)
+    axCurrency.set_ylabel('Currecny value', color = currencyColor)
+    axToken.set_ylabel('Wow token value', color = wowTokenColor)
+    #axCurrency.xticks(rotation = xRotation, color = xColor)
     plt.show()    
+    
     
 main()
