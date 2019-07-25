@@ -31,7 +31,7 @@ def main():
     # SETTING UP WOWTOKEN DATA FRAME
     query = 'SELECT * FROM wowtoken WHERE Us != "";'
     dfWowtoken = pd.read_sql_query(query,conn)
-    
+
     dfWowtoken = convertStrFlt(dfWowtoken, 'Us')
     dfWowtoken = convertStrFlt(dfWowtoken, 'Eu')
     dfWowtoken = convertStrFlt(dfWowtoken, 'Ch')
@@ -39,30 +39,29 @@ def main():
     dfWowtoken = convertStrFlt(dfWowtoken, 'Kr')
     dfWowtoken = convertStrDate(dfWowtoken)
     dfWowtoken = dfWowtoken.drop(['time','id','date'], axis = 1)
-
     # SETTING UP CURRENCY DATA FRAME
-    query = 'UPDATE currency SET Brl="0" WHERE Brl IS NULL;'
-    cursor.execute(query)
 
-    query = 'SELECT * FROM currency;'
+    #query = 'UPDATE currency SET Brl="0" WHERE Brl IS NULL;'
+    #cursor.execute(query)
+
+    query = 'SELECT * FROM currency WHERE date != "";'
     dfCurrency = pd.read_sql_query(query,conn)
+    #print(dfCurrency)
 
-    convertStrFlt(dfCurrency,'Usd')
-    convertStrFlt(dfCurrency,'Eur')
-    convertStrFlt(dfCurrency,'Cny')
-    convertStrFlt(dfCurrency,'Krw')
-    convertStrFlt(dfCurrency,'Brl')
-    convertStrDate(dfCurrency)
+    dfCurrency = convertStrFlt(dfCurrency,'Usd')
+    dfCurrency = convertStrFlt(dfCurrency,'Eur')
+    dfCurrency = convertStrFlt(dfCurrency,'Cny')
+    dfCurrency = convertStrFlt(dfCurrency,'Krw')
+    dfCurrency = convertStrFlt(dfCurrency,'Brl')
+    dfCurrency = convertStrDate(dfCurrency)
 
-    print(dfCurrency)
     dfCurrency = dfCurrency.drop(['time','id','date'], axis = 1)
 
     # PARAMS
     currencyColor = '#0000FF' # #00FFFF -> BLUE
     wowTokenColor = '#FF0000' # #FF1493 -> PINK
-    xRotation = 20
 
-    op = 2
+    op = 1
 
     if op == 0:
         country = 'Us'
@@ -88,6 +87,5 @@ def main():
     axToken.set_ylabel('Wow token value', color = wowTokenColor)
     #axCurrency.xticks(rotation = xRotation, color = xColor)
     plt.show()    
-    
     
 main()
