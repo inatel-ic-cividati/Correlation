@@ -3,69 +3,30 @@ import sqlite3
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
+from sklearn.metrics import r2_score
 #plt.style.use('dark_background')
- 
-def convertStrFlt(dataFrame, name):
-    
-    # converting str to float
-    dataFrame[name] = dataFrame[name].str.replace(',','.')
-    dataFrame[name] = dataFrame[name].astype('float')
-    
-    return dataFrame
-
-def convertStrDate(dataFrame):
-
-    # converting the column date to datetime64
-    dataFrame['date'] = dataFrame['date'].str.replace('/','-')
-    dataFrame['date'] = dataFrame['date']+' '+dataFrame['time']
-    dataFrame['date'] = dataFrame['date'].astype('datetime64[m]')
-    dataFrame.index = dataFrame['date']
-
-    return dataFrame
 
 def main():
 
-    conn = sqlite3.connect('wow.db')
+    # C:/Users/Amor/Desktop/IC/wow_az.db
+    db_url = 'your_db_url_here.db'
+    conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
 
-    # SETTING UP WOWTOKEN DATA FRAME
+    # setting up wowtokne dataframe
     query = 'SELECT * FROM wowtoken WHERE Us != "";'
     dfWowtoken = pd.read_sql_query(query,conn)
 
-    dfWowtoken = convertStrFlt(dfWowtoken, 'Us')
-    dfWowtoken = convertStrFlt(dfWowtoken, 'Eu')
-    dfWowtoken = convertStrFlt(dfWowtoken, 'Ch')
-    dfWowtoken = convertStrFlt(dfWowtoken, 'Tw')
-    dfWowtoken = convertStrFlt(dfWowtoken, 'Kr')
-    dfWowtoken = convertStrDate(dfWowtoken)
-    dfWowtoken = dfWowtoken.drop(['time','id','date'], axis = 1)
-    # SETTING UP CURRENCY DATA FRAME
-
-    #query = 'UPDATE currency SET Brl="0" WHERE Brl IS NULL;'
-    #cursor.execute(query)
-
+    # setting up currecny dataframe
     query = 'SELECT * FROM currency WHERE date != "";'
     dfCurrency = pd.read_sql_query(query,conn)
-    #print(dfCurrency)
 
-    dfCurrency = convertStrFlt(dfCurrency,'Usd')
-    dfCurrency = convertStrFlt(dfCurrency,'Eur')
-    dfCurrency = convertStrFlt(dfCurrency,'Cny')
-    dfCurrency = convertStrFlt(dfCurrency,'Krw')
-    dfCurrency = convertStrFlt(dfCurrency,'Brl')
-    dfCurrency = convertStrDate(dfCurrency)
-
-    dfCurrency = dfCurrency.drop(['time','id','date'], axis = 1)
-
-    # PARAMS
-    currencyColor = '#0000FF' # #00FFFF -> BLUE
-    wowTokenColor = '#FF0000' # #FF1493 -> PINK
-
-    op = 1
+    op = 2
 
     if op == 0:
         country = 'Us'
         currency = 'Usd'
+
     elif op == 1:
         country = 'Eu'
         currency = 'Eur'
@@ -77,15 +38,88 @@ def main():
         currency = 'Krw'
     elif op == 4:
         country = 'Eu'
-        currency = 'Brl'
+        currency = 'Usd'
+    
+    # GET THE AVG VALUE OF WOWTOKEN
+    # -> fazer a linha
+    # PARAMETERS
+    sampleColor1 = '#FF00FF'
+    sampleColor2 = '#00F0FF'
+    sampleColor3 = '#0FFFF0'
+    sampleColor4 = '#0F00F0'
+    
 
-    axCurrency = plt.subplot()
-    axToken = axCurrency.twinx()
-    axToken.plot(dfWowtoken[country], label=country, color = wowTokenColor)
-    axCurrency.plot(dfCurrency[currency], label=currency, color = currencyColor)
-    axCurrency.set_ylabel('Currecny value', color = currencyColor)
-    axToken.set_ylabel('Wow token value', color = wowTokenColor)
-    #axCurrency.xticks(rotation = xRotation, color = xColor)
+    country_avg = country + '_avg'
+    currency_avg = currency + '_avg'
+
+    print('wowtoken size: ',len(dfWowtoken[country]))
+    print('wowtoken AVG size: ',len(dfWowtoken[country_avg]))
+
+    #x = dfWowtoken[country]
+    #y = dfCurrency[currency]    
+
+    print(dfWowtoken)
+    #normalize the data
+    
+    #print(len(x))
+    #print(len(y))
+
+    #print(x.max())
+    
+    #print('start debbuging')
+    #print ('np.corrcoef: ', np.corrcoef(x,y))
+    #print ('r2_score: ', r2_score(x,y))
+    #print("end debbuging")
+
+    # GRAPHICS
+    # Plot all data without smoothing
+    fig1, allData = plt.subplots(2, 1, sharex = True)
+    avgData1 = allData[0].twinx()
+    avgData2 = allData[1].twinx()
+
+    allData[0].plot(dfWowtoken[country], label=country, color = sampleColor1)
+    allData[0].set_ylabel('WowToken ' + country +' value', color = sampleColor1)
+    
+    avgData1.plot(dfCurrency[currency], label=currency, color = sampleColor3)
+    avgData1.set_ylabel('Currecny ' + currency +' value', color = sampleColor3)
+
+    # Plot all data with smoothing
+
+    allData[1].plot(dfWowtoken[country_avg], label=country, color = sampleColor1)
+    allData[1].set_ylabel('WowToken ' + country +' avg value', color = sampleColor1)  
+
+    avgData2.plot(dfCurrency[currency_avg], label=currency, color = sampleColor3)
+    avgData2.set_ylabel('Currecny ' + currency +' avg value', color = sampleColor3)
+
+    # PLOT TWO
+    fig2, axs = plt.subplots(2,1, sharex = True)
+
+    wowTokenPlot = axs[0].twinx()
+    wowTokenPlot.plot(dfWowtoken[country], color = sampleColor2)
+    wowTokenPlot.set_ylabel('WowToken ' + country + ' Real', color = sampleColor2)
+    axs[0].plot(dfWowtoken[country_avg], color = sampleColor4)
+    axs[0].set_ylabel('WowToken ' +country + ' AVG', color = sampleColor4)
+
+    currencyPlot = axs[1].twinx()
+    currencyPlot.plot(dfCurrency[currency],color = sampleColor1)
+    currencyPlot.set_ylabel('Currency '+ currency +' Real', color=sampleColor1)
+    axs[1].plot(dfCurrency[currency_avg], color = sampleColor3)
+    axs[1].set_ylabel('Currency '+ currency +' AVG', color = sampleColor3)
+
+    # PLOT THREE
+    fig, axs = plt.subplots(2,2,sharex = True)
+    axs[0][0].set_title('WowToken '+ country + ' Real', color = sampleColor2)
+    axs[0][0].plot(dfWowtoken[country], color = sampleColor2)
+
+    axs[0][1].set_title('WowToken ' + country + ' AVG', color = sampleColor4)
+    axs[0][1].plot(dfWowtoken[country_avg], color = sampleColor4)
+    
+    axs[1][0].set_title('Currency ' + currency + ' Real', color=sampleColor1)
+    axs[1][0].plot(dfCurrency[currency],color = sampleColor1)
+
+    axs[1][1].set_title('Currency '+currency +' AVG', color = sampleColor3)
+    axs[1][1].plot(dfCurrency[currency_avg], color = sampleColor3)
+
     plt.show()    
     
 main()
