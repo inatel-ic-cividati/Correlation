@@ -8,7 +8,6 @@ from sklearn.metrics import r2_score
 
 def main():
 
-    # C:/Users/Amor/Desktop/IC/wow_az.db
     db_url = 'your_db_url_here.db'
     conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
