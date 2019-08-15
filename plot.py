@@ -8,7 +8,8 @@ from sklearn.metrics import r2_score
 
 def main():
 
-    db_url = 'your_db_url_here.db'
+    # C:/Users/Amor/Desktop/IC/wow_az.db
+    db_url = 'C:/Users/Amor/Desktop/IC/wow_az.db'
     conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
 
@@ -40,37 +41,16 @@ def main():
         currency = 'Usd'
     
     # GET THE AVG VALUE OF WOWTOKEN
-    # -> fazer a linha
     # PARAMETERS
     sampleColor1 = '#FF00FF'
     sampleColor2 = '#00F0FF'
     sampleColor3 = '#0FFFF0'
     sampleColor4 = '#0F00F0'
-    
 
     country_avg = country + '_avg'
     currency_avg = currency + '_avg'
 
-    print('wowtoken size: ',len(dfWowtoken[country]))
-    print('wowtoken AVG size: ',len(dfWowtoken[country_avg]))
-
-    #x = dfWowtoken[country]
-    #y = dfCurrency[currency]    
-
-    print(dfWowtoken)
-    #normalize the data
-    
-    #print(len(x))
-    #print(len(y))
-
-    #print(x.max())
-    
-    #print('start debbuging')
-    #print ('np.corrcoef: ', np.corrcoef(x,y))
-    #print ('r2_score: ', r2_score(x,y))
-    #print("end debbuging")
-
-    # GRAPHICS
+    # PLOT ONE
     # Plot all data without smoothing
     fig1, allData = plt.subplots(2, 1, sharex = True)
     avgData1 = allData[0].twinx()
