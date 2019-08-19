@@ -1,6 +1,7 @@
 import sqlite3
 
-conn = sqlite3.connect('/home/rubens_cividati_teles/wow.db')
+db = 'DB FOLDER HERE'
+conn = sqlite3.connect(db)
 cursor = conn.cursor()
 
 def setDatabase(): 
@@ -26,21 +27,13 @@ def setDatabase():
         Usd TEXT NOT NULL,
         Eur TEXT NOT NULL,
         Cny TEXT NOT NULL,
-        Krw TEXT NOT NULL
+        Krw TEXT NOT NULL,
+        Brl TEXT NOT NULL
     );
     """)
 
-    print('Table wowtoken created sucessfully!')
+    print('Wowtoken database created sucessfully!')
 
-def updateDatabase ():
-    
-    cursor.execute("""
-    ALTER TABLE currency
-
-        ADD Brl TEXT 
-    ;
-    """)
-
-updateDatabase()
+setDatabase()
 
 conn.close()
