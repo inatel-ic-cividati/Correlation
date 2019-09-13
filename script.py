@@ -1,5 +1,3 @@
-#   Dev: Amor
-
 import sqlite3
 from urllib.request import urlopen 
 from bs4 import BeautifulSoup as bs4
@@ -8,16 +6,16 @@ import time as t
 import json
 import requests
 
- # setting up the databse
-db_url = '/db/directory/wow.db'
-conn = sqlite3.connect(db_url)
+# setting up the databse
+db_url = 'C:/YOUR/FOLDER/HERE/'
+conn = sqlite3.connect(db_url+'wow.db')
 cursor = conn.cursor()
 
 date = datetime.now().strftime("%m/%d/%Y")
 time = ''
 
+# dictionary used to convert the text 'Month' in respective number
 dateDict = {
-
     "Jan": "01",
     "Feb": "02",
     "Mar": "03",
@@ -26,14 +24,14 @@ dateDict = {
     "Jun": "06",
     "Jul": "07",
     "Aug": "08",
-    "Set": "09",
+    "Sep": "09",
     "Oct": "10",
     "Nov": "11",
     "Dec": "12",
 }
 
 class Token:
-    
+
     Date = datetime.now().strftime("%m/%d/%Y")
     Time = datetime.now().strftime("%H:%M:%S")
     Us = ''
@@ -43,7 +41,6 @@ class Token:
     Tw = ''
 
 class Currency:
-
     Date = ''
     Time = ''
     Usd = ''
@@ -54,10 +51,9 @@ class Currency:
 
 
 def insertData(Token, Currency):
-
     try:  
 
-        #   insert Token
+        # Insert Token values into db
         values = Token.Date, Token.Time, Token.Us ,Token.Eu, Token.Ch, Token.Kr, Token.Tw
         cursor.execute("""
         INSERT INTO wowtoken (date, time, Us, Eu, Ch, Kr, Tw)
@@ -65,7 +61,7 @@ def insertData(Token, Currency):
         """)
         conn.commit()
 
-        #   insert Currency 
+        # Insert Currency values into db
         values = Currency.Date, Currency.Time, Currency.Usd, Currency.Eur, Currency.Cny, Currency.Krw, Currency.Brl
         cursor.execute("""
         INSERT INTO currency (date, time, Usd, Eur, Cny, Krw, Brl)
@@ -84,7 +80,6 @@ def insertData(Token, Currency):
         return False
 
 def setCurrency(Currency):
-    
     try:
         r = requests.get('https://api.exchangeratesapi.io/latest?symbols=USD,BRL,EUR,CNY,KRW&base=USD')
         
@@ -112,7 +107,6 @@ def setCurrency(Currency):
         return e
 
 def setToken(Token):
-
     Token.Date = datetime.now().strftime("%m/%d/%Y")
     Token.Time = datetime.now().strftime("%H:%M:%S")
 
@@ -138,7 +132,6 @@ def setToken(Token):
         return e
 
 def main():
-    
     attempt = 0
     isTrying = True
     while isTrying:
