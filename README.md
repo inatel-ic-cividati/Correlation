@@ -3,7 +3,7 @@ This is a scientific iniciation from [National Telecommunications Institute](ina
 
 ## Auxiliar tools
 
-- [gdrive](https://github.com/prasmussen/gdrive) -> Auxiliar to upload automatically the database
+- [gdrive](https://github.com/prasmussen/gdrive): Upload automatically the database to my google drive.
 
 ## Used Libraries:
 
