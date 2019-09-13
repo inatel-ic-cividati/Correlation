@@ -9,7 +9,7 @@ import json
 import requests
 
  # setting up the databse
-db_url = 'db directory.wow_az.db'
+db_url = '/db/directory/wow.db'
 conn = sqlite3.connect(db_url)
 cursor = conn.cursor()
 
