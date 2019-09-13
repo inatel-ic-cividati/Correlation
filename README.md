@@ -2,7 +2,7 @@
 This is a Scientific Iniciation from National Institue of Telecomunication.
 This project's objective is develop a financial time series forecasting tool in a Massively Multiplayer Online Role-Playing Game, World of Warcraft.
 
-# Auxiliar tools
+## Auxiliar tools
 
 - [gdrive](https://github.com/prasmussen/gdrive) -> Auxiliar to upload automatically the database
 
