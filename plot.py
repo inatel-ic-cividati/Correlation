@@ -9,7 +9,7 @@ from sklearn.metrics import r2_score
 def main():
 
     # setting up the databse
-    db_url = 'db directory.wow_az.db'
+    db_url = '/db/directory/wow_az.db'
     conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
 
