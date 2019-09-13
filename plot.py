@@ -8,8 +8,8 @@ from sklearn.metrics import r2_score
 
 def main():
 
-    # C:/Users/Amor/Desktop/IC/wow_az.db
-    db_url = 'C:/Users/Amor/Desktop/IC/wow_az.db'
+    # setting up the databse
+    db_url = 'db directory.wow_az.db'
     conn = sqlite3.connect(db_url)
     cursor = conn.cursor()
 
@@ -26,7 +26,6 @@ def main():
     if op == 0:
         country = 'Us'
         currency = 'Usd'
-
     elif op == 1:
         country = 'Eu'
         currency = 'Eur'
