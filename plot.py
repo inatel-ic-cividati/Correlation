@@ -9,8 +9,8 @@ from sklearn.metrics import r2_score
 def main():
 
     # setting up the databse
-    db_url = '/db/directory/wow_az.db'
-    conn = sqlite3.connect(db_url)
+    db_url = 'C:/YOUR/FOLDER/HERE/'
+    conn = sqlite3.connect(db_url+'wow_az.db')
     cursor = conn.cursor()
 
     # setting up wowtokne dataframe
@@ -41,10 +41,10 @@ def main():
     
     # GET THE AVG VALUE OF WOWTOKEN
     # PARAMETERS
-    sampleColor1 = '#FF00FF'
-    sampleColor2 = '#00F0FF'
-    sampleColor3 = '#0FFFF0'
-    sampleColor4 = '#0F00F0'
+    sampleColor1 = '#FF0000'
+    sampleColor2 = '#FF0000'
+    sampleColor3 = '#0000FF'
+    sampleColor4 = '#0000FF'
 
     country_avg = country + '_avg'
     currency_avg = currency + '_avg'
@@ -62,7 +62,6 @@ def main():
     avgData1.set_ylabel('Currecny ' + currency +' value', color = sampleColor3)
 
     # Plot all data with smoothing
-
     allData[1].plot(dfWowtoken[country_avg], label=country, color = sampleColor1)
     allData[1].set_ylabel('WowToken ' + country +' avg value', color = sampleColor1)  
 
