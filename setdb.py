@@ -1,7 +1,8 @@
 import sqlite3
 
-db = 'DB FOLDER HERE'
-conn = sqlite3.connect(db)
+ # creating the databse
+db_url = '/db/directory/wow.db'
+conn = sqlite3.connect(db_url)
 cursor = conn.cursor()
 
 def setDatabase(): 
