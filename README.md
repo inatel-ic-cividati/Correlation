@@ -1,5 +1,6 @@
 # Time series forecasting tool
-This is a Scientific Iniciation from National Institue of Telecomunication. It cannot provide the data, but can show you how to get it.
+This is a Scientific Iniciation from National Institue of Telecomunication.
+This project's objective is develop a financial time series forecasting tool in a Massively Multiplayer Online Role-Playing Game, World of Warcraft.
 
 # Auxiliar tools
 
