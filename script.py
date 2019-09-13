@@ -8,9 +8,9 @@ import time as t
 import json
 import requests
 
-
-dbdirectory = 'db directory here.db'
-conn = sqlite3.connect(dbdirectory)
+ # setting up the databse
+db_url = 'db directory.wow_az.db'
+conn = sqlite3.connect(db_url)
 cursor = conn.cursor()
 
 date = datetime.now().strftime("%m/%d/%Y")
