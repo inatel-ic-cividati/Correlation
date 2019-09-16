@@ -4,33 +4,33 @@ This is a scientific iniciation from [National Telecommunications Institute](ina
 ## Abstract
 This project aims to correlate two currencies values, the country currency (BRL, USD, EUR, TWD and CNY) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch, Kr and Tw), use the linear regression algorithm, and plot a graphic that show the past of curriencies and the future.
 
-# Setting up!
+## Setting up!
 First of all, we are using the [Python 3.7.4](https://www.python.org/downloads/release/python-374/).
 
-## Installing the requirements
+### Installing the requirements
 You can download this repository as a zip, and run the following command in to terminal to install the dependecies:
 
 ```pip install -r requirements.txt```
-## Scripts
+### Scripts
 Description of the scripts. Run in sequence.
 
-### Setdb.py
+#### setdb.py
 This script create the whole database that we will use in this project.
 
-### Script.py
+#### script.py
 This script is able to collect the wowtoken value from wowtokenprices.com and the curriencies value from exchangeratesapi.
 
-### Adjustdb.py
+#### adjustdb.py
 This one is capaple to organize the data that we have colleted before, and generate the maens value and average values from each currency and wowtoken.
 
-### Plot.py
+#### plot.py
 The function of this script is plot the data.
 
 ## Auxiliar tools
 
 - [gdrive](https://github.com/prasmussen/gdrive): Upload automatically the database to my google drive.
 
-## Used Libraries:
+## Libraries:
 
 The following libraries were used in the project:
 - [Pandas](https://pandas.pydata.org): Dataframes manipulation;
@@ -49,3 +49,4 @@ The following libraries were used in the project:
 ### Contributors
 - Daniel Pontello (https://github.com/danielpontello)
 - Isabella Capistrano
+- Henrique B. Lang (https://github.com/henriqueblang)
