@@ -2,7 +2,28 @@
 This is a scientific iniciation from [National Telecommunications Institute](inatel.br) titled "Development a Financial Time Series Forecasting Tool in a Massively Multiplayer Online Role-Playing Game".
 
 ## Abstract
-This project aims to correlate two currencies values, the country currency(BRL, USD, EUR, TWD or CNY) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch, Kr, Tw)
+This project aims to correlate two currencies values, the country currency (BRL, USD, EUR, TWD and CNY) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch, Kr and Tw), use the linear regression algorithm, and plot a graphic that show the past of curriencies and the future.
+
+# Setting up!
+First of all, we are using the Python 3.7.4.
+
+## Installing the requirements
+You can download this repository as a zip, and run the following command in to terminal to install the dependecies:
+```pip install -r requirements.txt```
+## Scripts
+Description of the scripts. Run in sequence.
+
+### Setdb.py
+This script create the whole database that we will use in this project.
+
+### Script.py
+This script is able to collect the wowtoken value from wowtokenprices.com and the curriencies value from exchangeratesapi.
+
+### Adjustdb.py
+This one is capaple to organize the data that we have colleted before, and generate the maens value and average values from each currency and wowtoken.
+
+### Plot.py
+The function of this script is plot the data.
 
 ## Auxiliar tools
 
