@@ -1,6 +1,9 @@
 # Time series forecasting tool
 This is a scientific iniciation from [National Telecommunications Institute](inatel.br) titled "Development a Financial Time Series Forecasting Tool in a Massively Multiplayer Online Role-Playing Game".
 
+## Abstract
+This project aims to correlate two currencies values, the country currency(BRL, USD, EUR, TWD or CNY) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch, Kr, Tw)
+
 ## Auxiliar tools
 
 - [gdrive](https://github.com/prasmussen/gdrive): Upload automatically the database to my google drive.
