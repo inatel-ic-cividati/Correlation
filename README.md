@@ -5,7 +5,7 @@ This is a scientific iniciation from [National Telecommunications Institute](ina
 This project aims to correlate two currencies values, the country currency (BRL, USD, EUR, TWD and CNY) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch, Kr and Tw), use the linear regression algorithm, and plot a graphic that show the past of curriencies and the future.
 
 # Setting up!
-First of all, we are using the Python 3.7.4, you can download it here -> [Python 3.7.4](https://www.python.org/downloads/release/python-374/).
+First of all, we are using the [Python 3.7.4](https://www.python.org/downloads/release/python-374/).
 
 ## Installing the requirements
 You can download this repository as a zip, and run the following command in to terminal to install the dependecies:
