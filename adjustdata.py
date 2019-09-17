@@ -72,7 +72,7 @@ def main():
     # creating a new index in the dataframe
     convertStrDate(dfCurrency)
     dfCurrency = dfCurrency.drop(['time','id','date', 'index'], axis = 1)
-    
+
     # creating new columns in the dataframe
     for column in dfCurrency.columns:
         convertStrFlt(dfCurrency, column)
@@ -82,6 +82,11 @@ def main():
     # creating the new database
     conn = sqlite3.connect(db_url+'wow_az.db')
 
+    
+    # Re-ordering columns 
+    dfCurrency = dfCurrency.reindex(sorted(dfCurrency.columns), axis=1)
+    dfWowtoken = dfWowtoken.reindex(sorted(dfWowtoken.columns), axis=1)
+    
     # writing in the database
     dfWowtoken.to_sql('wowtoken', conn)
     dfCurrency.to_sql('currency', conn)
