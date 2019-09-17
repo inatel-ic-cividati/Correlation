@@ -18,7 +18,7 @@ Description of the scripts. Run in sequence.
 This script create the whole database that we will use in this project. The database's name is wow.db
 
 #### script.py
-This script is able to collect the wowtoken value from wowtokenprices.com and the curriencies value from exchangeratesapi.
+This script is able to collect the wowtoken value from [wowtokenprices](https://wowtokenprices.com) and the curriencies value from [exchangeratesapi](https://exchangeratesapi.io/).
 
 #### adjustdb.py
 This one is capaple to organize the data that we have colleted before, and generate the maens value and average values from each currency and wowtoken, after this process, the script will create a new database called wow_az.db
