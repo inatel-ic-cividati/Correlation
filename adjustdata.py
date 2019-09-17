@@ -8,7 +8,7 @@ from sklearn.preprocessing import Normalizer
 from sklearn import preprocessing 
 import sklearn
 
-db_url = 'C:/Users/Amor/Desktop/IC/'
+db_url = 'C:/Your/Folder/here/'
 
 # converting str to float
 def convertStrFlt(dataFrame, name):
@@ -49,7 +49,6 @@ def main():
         
     # opening the database
     conn = sqlite3.connect(db_url+'wow.db')
-    cursor = conn.cursor()
 
     # setting up the wowtoken dataframe
     query = 'SELECT * FROM wowtoken WHERE Us != "";'
