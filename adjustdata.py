@@ -8,6 +8,8 @@ from sklearn.preprocessing import Normalizer
 from sklearn import preprocessing 
 import sklearn
 
+db_url = 'C:/Users/Amor/Desktop/IC/'
+
 # converting str to float
 def convertStrFlt(dataFrame, name):
     # replace all ',' to '.'
@@ -46,7 +48,6 @@ def setNormalizeField(dataFrame, name):
 def main():
         
     # opening the database
-    db_url = 'C:/YOUR/FOLDER/HERE/'
     conn = sqlite3.connect(db_url+'wow.db')
     cursor = conn.cursor()
 
@@ -71,7 +72,7 @@ def main():
     # creating a new index in the dataframe
     convertStrDate(dfCurrency)
     dfCurrency = dfCurrency.drop(['time','id','date', 'index'], axis = 1)
-    print(dfCurrency.head())
+    
     # creating new columns in the dataframe
     for column in dfCurrency.columns:
         convertStrFlt(dfCurrency, column)
