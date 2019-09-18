@@ -14,16 +14,16 @@ You can download this repository as a zip, and run the following command in to t
 ### Scripts
 Description of the scripts. Run in sequence.
 
-#### setdb.py
+#### setDatabase.py
 This script create the whole database that we will use in this project. The database's name is wow.db
 
-#### script.py
+#### getData.py
 This script is able to collect the wowtoken value from [wowtokenprices](https://wowtokenprices.com) and the curriencies value from [exchangeratesapi](https://exchangeratesapi.io/).
 
-#### adjustdb.py
+#### cleanDatabase.py
 This one is capaple to organize the data that we have colleted before, and generate the maens value and average values from each currency and wowtoken, after this process, the script will create a new database called wow_az.db
 
-#### plot.py
+#### plotData.py
 The function of this script is plot the data found in wow_az.db.
 
 ## Auxiliar tools
