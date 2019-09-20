@@ -44,14 +44,14 @@ def set_Table(wowtokentable, cursor):
 def insert_Table(df, wowtokentable):
     # unfinished
 
+    conn = db.get_connection('wow.db')
+    df.to_sql(wowtokentable, conn, if_exists='replace')    
 
 def get_Data(wowtoken):
     # implements to get all tokens
     req = requests.get('https://wowtokenprices.com/history_prices_full.json')
     resp = req.text
     json_obj = json.loads(resp)
-    data = pd.DataFrame(json_obj['us'])
+    data = pd.DataFrame(json_obj[wowtoken])
     
     return data
-
-get_Data('us')
