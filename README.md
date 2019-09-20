@@ -4,26 +4,31 @@ This is a scientific iniciation from [National Telecommunications Institute](ina
 ## Abstract
 This project aims to correlate two currencies values, the country currency (BRL, USD, EUR, TWD and CNY) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch, Kr and Tw), use the linear regression algorithm, and plot a graphic that show the past of curriencies and the future.
 
-## Setting up
+## Getting Started
 First of all, we are using the [Python 3.7.4](https://www.python.org/downloads/release/python-374/).
 
-### Installing the requirements
+### Prerequisites
 You can download this repository as a zip, and run the following command in to terminal to install the dependecies:
 
 ```pip install -r requirements.txt```
-### Scripts
-Description of the scripts. Run in sequence. Scripts aren't ready 
+### Installing
+You can run the ```install.py```(this code aren't ready) to setup your development env running. 
 
-#### main.py
+``` python install.py ```
+
+- install.py
 This script create the whole database that we will use in this project, the database's name is wow.db.
 
-#### database.py
-This script is able to create the whole database that we'llk use in the project named wow.db, collect the wowtoken value from [WoWTokenPrices.com](https://wowtokenprices.com) and the curriencies value from [Foreign exchange rates API](https://exchangeratesapi.io/).
+- database.py
+This script is able to create the database that we'll use in the project named wow.db, collect the wowtoken value from [WoWTokenPrices.com](https://wowtokenprices.com) and the curriencies value from [Foreign exchange rates API](https://exchangeratesapi.io/) and adjust our data from the parameters that we need to plot (implements from cleanDatabase.py).
 
-#### cleanDatabase.py
+- cleanDatabase.py (REMOVE)
 This one is capaple to organize the data that we have colleted before, and generate the maens values and average values from each currency and wowtoken, after this process, the script will create a new database named wow_az.db.
 
-#### plotData.py
+### Running
+You can run the project with the ```run.py``` (aren't ready), it will plot the 2d graphics from our data, and will give the information abou correlation between our curency and wowtoken
+
+- run.py
 The function of this script is plot the data found in wow_az.db.
 
 ## Auxiliar tools
