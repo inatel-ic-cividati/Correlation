@@ -24,23 +24,23 @@ def set_DataBase():
     except sqlite3.Error as e:
         print('error:',e)
 
-def set_Table(wowtokentable, cursor): 
+def set_Table(wowtokenTable, cursor): 
     try:
         # creating wowtoken table
-        wowtokencolunm = wowtokentable.replace("wowtoken_","")
+        wowtokencolunm = wowtokenTable.replace("wowtoken_","")
         wowtokencolunm = wowtokencolunm.replace("currency_","")
 
         cursor.execute("""
-        CREATE TABLE """+wowtokentable+"""(
+        CREATE TABLE """+wowtokenTable+"""(
             id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             time INT NOT NULL,
             """+wowtokencolunm+""" FLOAT NOT NULL
         );
         """)
-        print(wowtokentable+' table created sucessfully!')
+        print(wowtokenTable+' table created sucessfully!')
 
     except sqlite3.Error as e:
-            print(wowtokentable, 'error:', e)
+            print(wowtokenTable, 'error:', e)
 
 def get_Data(wowtoken):
     
@@ -63,25 +63,24 @@ def get_Data(wowtoken):
 
     return data
 
-def insert_Table(df, wowtokentable):
-
+def insert_Table(dataFrame, wowtokenTable):
+    # insert dataframe into wowtokne table
     conn = db.get_connection('wow.db')
-    df.to_sql(wowtokentable, conn, if_exists='replace')
+    dataFrame.to_sql(wowtokenTable, conn, if_exists='replace')
 
 def unix_datetime(dataFrame):
     # convert unix to datetime
-    timestamp = dataFrame['time']
-    for i in range (0,len(dataFrame['price'])):
-        dataFrame['time'][i] = datetime.fromtimestamp(timestamp[i])
-    os.system('cls')
+    # credits: Daniel Pontello
+    dataFrame['time'] = dataFrame['time'].apply(lambda x: datetime.fromtimestamp(x))
+    
     return dataFrame
 
-def str_Float(dataFrame, name):
+def str_Float(dataFrame, columnName):
     # converting str to float
     # replace all ',' to '.'
-    dataFrame[name] = dataFrame[name].str.replace(',','.')
-    # convert the type of dataFrame['name] to flaot
-    dataFrame[name] = dataFrame[name].astype('float')
+    dataFrame[columnName] = dataFrame[columnName].str.replace(',','.')
+    # convert the type of dataFrame['columnName] to flaot
+    dataFrame[columnName] = dataFrame[columnName].astype('float')
     
     return dataFrame
 
@@ -98,10 +97,10 @@ def str_Date(dataFrame):
 
     return dataFrame
 
-def set_Avg_Field(dataFrame, name, rollingNumber = 400):
+def set_Avg_Field(dataFrame, rollingNumber = 400):
     # create average field in the dataframe
     # search more this function
-    dataFrame[name + '_avg'] = dataFrame[name].rolling(rollingNumber).mean()
+    dataFrame['price_avg'] = dataFrame['price'].rolling(rollingNumber).mean()
 
     return dataFrame
 
