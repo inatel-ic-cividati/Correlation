@@ -11,25 +11,18 @@ These instructions will get you a copy of the project up and running on your loc
 First of all, we are using the [Python 3.7.4](https://www.python.org/downloads/release/python-374/). You can download this repository as a zip, and run the following command in to terminal to install the dependecies:
 
 ```pip install -r requirements.txt```
-### Installing
-You can run the ```install.py```(this code aren't ready) to setup your development env running. 
-
-``` python install.py ```
-
-- install.py
-This script create the whole database that we will use in this project, the database's name is wow.db.
-
-- database.py
-This script is able to create the database that we'll use in the project named wow.db, collect the wowtoken value from [WoWTokenPrices.com](https://wowtokenprices.com) and the curriencies value from [Foreign exchange rates API](https://exchangeratesapi.io/) and adjust our data from the parameters that we need to plot (implements from cleanDatabase.py).
-
-- cleanDatabase.py (REMOVE)
-This one is capaple to organize the data that we have colleted before, and generate the maens values and average values from each currency and wowtoken, after this process, the script will create a new database named wow_az.db.
 
 ### Running
-You can run the project with the ```run.py``` (aren't ready), it will plot the 2d graphics from our data, and will give the information abou correlation between our curency and wowtoken
+You can run the project with the ```main.py```, for a while it isn't plotting any graphics, but it's collecting the whole data needed for it.
+
+```python main.py```
+
+### Scripts
+- database.py
+This script have all functinos that we need to collect the wowtoken value from [WoWTokenPrices.com](https://wowtokenprices.com) and the curriencies value from [Foreign exchange rates API], adjust our data from the parameters that we need to plot. Plot isn't ready.
 
 - run.py
-The function of this script is plot the data found in wow_az.db.
+Run the functions in orded.
 
 ## Auxiliar tools
 
