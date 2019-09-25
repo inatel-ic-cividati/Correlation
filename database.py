@@ -46,6 +46,7 @@ def get_Data(wowtoken):
     
     # with internet connection
     try:
+        # load the data from the following link
         req = requests.get('https://wowtokenprices.com/history_prices_1_day.json')
         resp = req.text
         json_obj = json.loads(resp)
@@ -56,11 +57,14 @@ def get_Data(wowtoken):
     except:
         path = db.get_db_path() 
 
+        # load the data from file wowtoken_COUNTRY.json
         with open(path+'/wowtoken_'+wowtoken+'.json', 'r') as f:
             json_obj = json.load(f)
             data = pd.DataFrame(json_obj)
             print(wowtoken, 'data collected:', len(json_obj))
 
+    # reorder columns showing time first than price
+    data = data[['time', 'price']]
     return data
 
 def insert_Table(dataFrame, wowtokenTable):
@@ -72,7 +76,6 @@ def unix_datetime(dataFrame):
     # convert unix to datetime
     # credits: Daniel Pontello
     dataFrame['time'] = dataFrame['time'].apply(lambda x: datetime.fromtimestamp(x))
-    
     return dataFrame
 
 def str_Float(dataFrame, columnName):
@@ -104,10 +107,10 @@ def set_Avg_Field(dataFrame, rollingNumber = 400):
 
     return dataFrame
 
-def set_Normalized_Field(dataFrame, name):
+def set_Normalized_Field(dataFrame):
     # normalize the data
     # divide the whole colomn by the max index
-    dataFrame[name + '_nm'] = dataFrame[name] / max(dataFrame[name])
+    dataFrame['price_nm'] = dataFrame['price'] / max(dataFrame['price'])
 
     return dataFrame
 
