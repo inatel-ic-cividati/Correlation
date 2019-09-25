@@ -19,7 +19,7 @@ You can run the project with the ```main.py```, for a while it isn't plotting an
 
 ### Scripts
 - database.py: 
-This script have all functinos that we need to collect the wowtoken value from [WoWTokenPrices.com](https://wowtokenprices.com) and the curriencies value from [Foreign exchange rates API], adjust our data from the parameters that we need to plot. Plot isn't ready.
+This script have all functinos that we need to collect the wowtoken value from [WoWTokenPrices.com](https://wowtokenprices.com) and the curriencies value from (https://ratesapi.io/)[Foreign exchange rates API], adjust our data from the parameters that we need to plot. Plot isn't ready.
 
 - run.py: 
 Run the functions in orded.
