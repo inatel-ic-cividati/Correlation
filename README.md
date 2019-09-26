@@ -13,7 +13,7 @@ First of all, we are using the [Python 3.7.4](https://www.python.org/downloads/r
 ```pip install -r requirements.txt```
 
 ### Running
-You can run the project with the ```main.py```, for a while it isn't plotting any graphics, but it's collecting the whole data needed for it.
+You can run the project with the [main.py](https://github.com/Cividati/IC-wow/blob/master/main.py), for a while it isn't plotting any graphics, but it's collecting the whole data needed for it.
 
 ```python main.py```
 
@@ -21,12 +21,12 @@ You can run the project with the ```main.py```, for a while it isn't plotting an
 - [database.py](https://github.com/Cividati/IC-wow/blob/master/database.py): 
 This script have all functinos that we need to collect the wowtoken value from [WoW Token Prices](https://wowtokenprices.com) and the curriencies value from [Foreign exchange rates API](https://ratesapi.io), adjust our data from the parameters that we need to plot. Plot isn't ready.
 
-- [main.py](https://github.com/Cividati/IC-wow/blob/master/main.py): 
-Run the functions.
+- (in development) [main.py](https://github.com/Cividati/IC-wow/blob/master/main.py): 
+Run the functions sequencially. 
 
 ## Auxiliar tools
 
-- [gdrive](https://github.com/prasmussen/gdrive): Upload automatically the database to my google drive.
+- (in development) [gdrive](https://github.com/prasmussen/gdrive): Upload automatically the database to my google drive.
 
 ## Libraries:
 
