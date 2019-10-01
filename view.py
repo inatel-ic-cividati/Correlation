@@ -1,8 +1,4 @@
-import pandas as pd
-import sqlite3
-import numpy as np
 import matplotlib.pyplot as plt
-from datetime import datetime
 from sklearn.metrics import r2_score
 
 # PARAMETERS
