@@ -40,6 +40,7 @@ The following libraries were used in the project:
 ## Authors
 ### Advisor
 - Marcelo V. C. Aragão (https://github.com/marcelovca90)
+- Renzo Mesquita
 
 ### Students
 - Rubens Cividati (https://github.com/cividati)
