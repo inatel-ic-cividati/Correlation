@@ -30,4 +30,5 @@ database.insert_Table(dataChina, 'wowtoken_china')
 database.insert_Table(dataKorea, 'wowtoken_korea')
 database.insert_Table(dataTaiwan, 'wowtoken_taiwan')
 os.system('cls')
+
 print('Script done, your data is sotored in /data/wow.db!')
