@@ -48,3 +48,4 @@ The following libraries were used in the project:
 - Daniel Pontello (https://github.com/danielpontello)
 - Isabella Capistrano
 - Henrique B. Lang (https://github.com/henriqueblang)
+- Gabriel Claret (https://github.com/claret1)
