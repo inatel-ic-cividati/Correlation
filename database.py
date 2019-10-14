@@ -67,6 +67,13 @@ def get_Data(wowtoken):
     data = data[['time', 'price']]
     return data
 
+def read_Data(tableName):
+    # this funcion read the data collected
+    conn = db.get_connection('wow_read.db')
+
+    dataFrame = pd.read_sql_query('SELECT * FROM '+tableName+' WHERE Us!=""', conn)
+    return dataFrame
+
 def insert_Table(dataFrame, wowtokenTable):
     # insert dataframe into wowtokne table
     conn = db.get_connection('wow.db')
