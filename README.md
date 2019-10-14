@@ -31,7 +31,7 @@ This code contains the functions that's able to plot our data.
 
 ## Auxiliar tools
 
-- (in development) [gdrive](https://github.com/prasmussen/gdrive): Upload automatically the database to my google drive.
+- [gdrive](https://github.com/prasmussen/gdrive): Upload automatically the database to my google drive.
 
 ## Libraries:
 
