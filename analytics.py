@@ -13,11 +13,10 @@ def correlationIndex (array1, array2):
         # return the correlation index
         return cor
 
-def autoRegression(array):
+def linearRegression(array, qt = 0):
     # makes a autoregreesion
     model = AR(array)
     model_fit = model.fit()
-
-    yhat = model_fit.predict(len(array), len(array))
+    yhat = model_fit.predict(len(array), len(array)+qt)
     # return the array preditcted
     return yhat
