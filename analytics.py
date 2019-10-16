@@ -20,7 +20,7 @@ def autoregressive(array, qt = 0):
     model = AR(array)
     model_fit = model.fit()
     yhat = model_fit.predict(len(array), len(array)+qt)
-    # return the array preditcted
+    
     return yhat
 
 def arima(array, qt = 0):
