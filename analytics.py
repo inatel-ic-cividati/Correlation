@@ -1,5 +1,7 @@
 import numpy as np
 from statsmodels.tsa.ar_model import AR
+from statsmodels.tsa.arima_model import ARMA
+import statsmodels.api as sm
 
 def correlationIndex (array1, array2):
     # correlate the two arrays
@@ -13,10 +15,18 @@ def correlationIndex (array1, array2):
         # return the correlation index
         return cor
 
-def linearRegression(array, qt = 0):
+def autoregressive(array, qt = 0):
     # makes a autoregreesion
     model = AR(array)
     model_fit = model.fit()
     yhat = model_fit.predict(len(array), len(array)+qt)
-    # return the array preditcted
+
+    return yhat
+
+def arima(array):
+    # Autoregressive Moving Average ARMA(p,q) Model
+    model = ARMA(array, (1,0))
+    model_fit = model.fit()
+    yhat = model_fit.predict(len(array), len(array))
+
     return yhat
