@@ -1,4 +1,4 @@
-# Time series forecasting tool
+# Time Series Forecasting Tool
 This is a scientific iniciation from [National Telecommunications Institute](inatel.br) titled "Development a Financial Time Series Forecasting Tool in a Massively Multiplayer Online Role-Playing Game".
 
 ## Abstract
