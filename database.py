@@ -25,23 +25,23 @@ def set_DataBase():
     except sqlite3.Error as e:
         print('error:',e)
 
-def set_Table(wowtokenTable, cursor): 
+def set_Table(Table, cursor): 
     try:
         # creating wowtoken table
-        wowtokencolunm = wowtokenTable.replace("wowtoken_","")
-        wowtokencolunm = wowtokencolunm.replace("currency_","")
+        Colunm = Table.replace("wowtoken_","")
+        Colunm = Colunm.replace("currency_","")
 
         cursor.execute("""
-        CREATE TABLE """+wowtokenTable+"""(
+        CREATE TABLE """+Table+"""(
             id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             time INT NOT NULL,
-            """+wowtokencolunm+""" FLOAT NOT NULL
+            """+Colunm+""" FLOAT NOT NULL
         );
         """)
-        print(wowtokenTable+' table created sucessfully!')
+        print(Table+' table created sucessfully!')
 
     except sqlite3.Error as e:
-            print(wowtokenTable, 'error:', e)
+            print(Table, 'error:', e)
 
 def get_Data(wowtoken):
     # with internet connection
