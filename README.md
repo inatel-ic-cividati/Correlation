@@ -43,7 +43,7 @@ The following libraries were used in the project:
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/): Used for webscrapping.
 
 ## Authors
-### Advisor
+### Advisors
 - Marcelo V. C. Aragão (https://github.com/marcelovca90)
 - Renzo Mesquita
 
