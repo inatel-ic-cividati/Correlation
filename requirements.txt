@@ -1,6 +1,7 @@
-pandas==0.24.2
-requests==2.22.0
-pandas_datareader==0.7.0
-matplotlib==3.0.3
 numpy==1.16.3
+requests==2.22.0
+pandas==0.24.2
+statsmodels==0.10.1
+matplotlib==3.0.3
+scikit_learn==0.21.3
 beautifulsoup4==4.7.1
