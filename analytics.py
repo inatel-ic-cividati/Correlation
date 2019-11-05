@@ -23,7 +23,7 @@ def autoregressive(array, qt = 0):
     
     return yhat
 
-def arima(array, qt = 0):
+def arma(array, qt = 0):
     # Autoregressive Moving Average ARMA(p,q) Model
     model = ARMA(array, (1,0))
     model_fit = model.fit()
