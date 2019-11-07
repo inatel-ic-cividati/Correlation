@@ -38,16 +38,21 @@ def main_not_finished():
     print('Your data is sotored in /data/wow.db!')
     print(dataEu['price'])
 
-def main(): 
+if __name__ == '__main__': 
 
-    dfWowtoken = database.read_Data('wowtoken')
-    dfCurrency = database.read_Data('currency')
+    try:
+        # data collected in server
+        dfWowtoken = database.read_Data('wowtoken')
+        dfCurrency = database.read_Data('currency')
+        df = database.join_data(dfCurrency, dfWowtoken)
+    except:
+        # data collected in wowtokenprices.com
+        dfUs = database.get_Data('us')
+        dfEu = database.get_Data('eu')
+        dfChina = database.get_Data('china')
+        dfKorea = database.get_Data('korea')
+        dfTaiwan = database.get_Data('taiwan')
+        
+    print(dfWowtoken)
 
-    df = database.join_data(dfCurrency, dfWowtoken)
-    data = df['Us']
 
-main()
-
-data = [0,1,2,3,4,5,6,7,8,9]
-print(analytics.autoregressive(data, 2))
-print(analytics.arima(data, 2))
