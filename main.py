@@ -1,10 +1,10 @@
-import database # personal script
-import analytics #personal script
+import database                     # personal script
+import analytics                    # personal script
+from data import database as db     # personal script
 
+import os
 import view
 import pandas as pd
-import os
-from data import database as db
 
 def main_not_finished():
     # create the database with the tables
@@ -40,19 +40,9 @@ def main_not_finished():
 
 if __name__ == '__main__': 
 
-    try:
-        # data collected in server
-        dfWowtoken = database.read_Data('wowtoken')
-        dfCurrency = database.read_Data('currency')
-        df = database.join_data(dfCurrency, dfWowtoken)
-    except:
-        # data collected in wowtokenprices.com
-        dfUs = database.get_Data('us')
-        dfEu = database.get_Data('eu')
-        dfChina = database.get_Data('china')
-        dfKorea = database.get_Data('korea')
-        dfTaiwan = database.get_Data('taiwan')
-        
-    print(dfWowtoken)
-
-
+    # data collected in server
+    dfWowtoken = database.read_Data('wowtoken')
+    dfCurrency = database.read_Data('currency')
+    df = database.join_data(dfCurrency, dfWowtoken)
+    
+    print(analytics.correlationIndex(df['Us'], df['Usd']))

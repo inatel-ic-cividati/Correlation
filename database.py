@@ -1,12 +1,12 @@
-import sqlite3
-import os
-from data import database as db
+from data import database as db #personal script
 from datetime import datetime
-import json
-import requests
-import array
 import pandas as pd
 import numpy as np
+import requests
+import sqlite3
+import array
+import json
+import os
 
 def set_DataBase():
     # creating the databse 
@@ -44,6 +44,7 @@ def set_Table(Table, cursor):
             print(Table, 'error:', e)
 
 def get_Data(wowtoken):
+    # get the data directly from wowtokenprices.com
     # with internet connection
     try:
         # load the data from the following link
@@ -114,7 +115,6 @@ def join_data(df1, df2):
     merge = pd.merge(df1,df2, left_index=True, right_index=True)
     return merge
 
-
 def str_Float(dataFrame, columnName):
     # converting str to float
      # replace all ',' to '.'
@@ -150,4 +150,3 @@ def set_Normalized_Field(dataFrame):
     dataFrame['price_nm'] = dataFrame['price'] / max(dataFrame['price'])
 
     return dataFrame
-
