@@ -1,4 +1,4 @@
-from data import database as db #personal script
+from data import database as db # personal script
 from datetime import datetime
 import pandas as pd
 import numpy as np
@@ -69,13 +69,13 @@ def get_Data(wowtoken):
     return data
 
 def read_Data(tableName):
-    #read the data from the database 'wow_read.db'
+    # read the data from the database 'wow_read.db'
     conn = db.get_connection('wow_read.db')
 
     if tableName == 'wowtoken':
         
         dataFrame = pd.read_sql_query('SELECT * FROM '+tableName+' WHERE us != ""', conn)
-        #dataFrame = dataFrame.drop()
+        
         dataFrame = str_Date(dataFrame)
         dataFrame = dataFrame.drop(columns=['index', 'id', 'date', 'time'], axis = 0)
 
@@ -89,7 +89,7 @@ def read_Data(tableName):
     elif tableName == 'currency':
         
         dataFrame = pd.read_sql_query('SELECT * FROM '+tableName+' WHERE Brl != ""', conn)
-        #dataFrame = dataFrame.drop()
+        
         dataFrame = str_Date(dataFrame)
         dataFrame = dataFrame.drop(columns=['index', 'id', 'date', 'time'], axis = 0)
 
@@ -137,16 +137,17 @@ def str_Date(dataFrame):
 
     return dataFrame
 
-def set_Avg_Field(dataFrame, rollingNumber = 400):
+def set_Avg_Field(data, rollingNumber = 400):
     # create average field in the dataframe
     # search more this function
-    dataFrame['price_avg'] = dataFrame['price'].rolling(rollingNumber).mean()
+    data = data.rolling(rollingNumber).mean()
+    data = data[rollingNumber:]
+    
+    return data
 
-    return dataFrame
-
-def set_Normalized_Field(dataFrame):
+def set_Normalized_Field(data):
     # normalize the data
     # divide the whole colomn by the max index
-    dataFrame['price_nm'] = dataFrame['price'] / max(dataFrame['price'])
+    data = data / max(data)
 
-    return dataFrame
+    return data

@@ -1,19 +1,29 @@
-import numpy as np
-from statsmodels.tsa.ar_model import AR
 from statsmodels.tsa.arima_model import ARMA
+from statsmodels.tsa.ar_model import AR
+from scipy.stats import pearsonr
 import statsmodels.api as sm
+import numpy as np
 
-def correlationIndex (array1, array2):
+def correlationIndex(array1, array2):
     # correlate the two arrays
     if len(array1) != len(array2):
         print('error in lenght')
         return
 
     else:
-        cor = np.corrcoef(array1, array2, rowvar = False)
-        cor = cor[0,1]
+        cor = np.corrcoef(array1, array2, rowvar = False)[0,1]
         # return the correlation index
         return cor
+
+def covarianceIndex(array1, array2):
+    # covariance between two arrays
+    if len(array1) != len(array2):
+        print('error in lenght')
+        return
+
+    else:
+        # return the covariance index
+        return np.cov(array1, array2)[0][1]
 
 def autoregressive(array, qt = 0):
     # makes a autoregreesion
