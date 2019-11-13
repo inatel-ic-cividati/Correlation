@@ -2,6 +2,7 @@ from data import database as db     # personal script
 import analytics as anl             # personal script
 import database                     # personal script
 
+from datetime import datetime as dt
 import pandas as pd
 import view
 import os
@@ -39,29 +40,42 @@ def main_not_finished():
     print(dataEu['price'])
 
 if __name__ == '__main__': 
-
+    t_before = dt.now()
     # data collected in server
     dfWowtoken = database.read_Data('wowtoken')
     dfCurrency = database.read_Data('currency')
     df = database.join_data(dfCurrency, dfWowtoken)
-    
+    t_after = dt.now()
     op = 2
+    size = 1000
 
     if op == 1:
         data1 = df['Us']
+        data1_name = 'Us'
         data2 = df['Brl']
+        data2_name = 'Brasil'
 
     elif op == 2:
         data1 = df['Eu']
+        data1_name = 'Europe'
         data2 = df['Eur']
+        data2_name = 'Euro'
 
     elif op == 3:
         data1 = df['Ch']
+        data1_name = 'China'
         data2 = df['Cny']
+        data2_name = 'Renminbi'
     
     elif op == 4:
         data1 = df['Kr']
+        data1_name = 'Korea'
         data2 = df['Krw']
+        data2_name = 'Won Sul-coreano'
+
+    print('Elapsed time: '+str(t_after - t_before))
+    print('Server: '+ data1_name)
+    print('Currency: '+ data2_name)
 
     print('\nReal values')
     print('Correlation:', anl.correlationIndex(data1, data2))
@@ -80,5 +94,16 @@ if __name__ == '__main__':
     print('\nAvarage values')
     print('Correlation:', anl.correlationIndex(data1_avg, data2_avg))
     print('Covariance:', anl.covarianceIndex(data1_avg, data2_avg))
+    
+    predict_values = 1000
+    data1_pred = data1_nm[:-predict_values]
+    data1_pred = anl.arma(data1_nm, predict_values)
+    print(data1_nm.head(10))
+    print(data1_pred.head(10))
 
-    view.plot_graph_2(data1_avg, data2_avg)
+    print(type(data1_pred))
+    print(len(data1_pred))
+    
+    view.plot_graph_2(data1_nm, data2_nm)
+    
+

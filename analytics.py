@@ -11,8 +11,9 @@ def correlationIndex(array1, array2):
         return
 
     else:
-        cor = np.corrcoef(array1, array2, rowvar = False)[0,1]
+        cor = np.corrcoef(array1, array2, rowvar = False)[0,1]*100
         # return the correlation index
+        cor =  str("%.2f" % cor) +'%'
         return cor
 
 def covarianceIndex(array1, array2):
@@ -22,14 +23,16 @@ def covarianceIndex(array1, array2):
         return
 
     else:
+        cov = np.cov(array1, array2)[0][1]*100
         # return the covariance index
-        return np.cov(array1, array2)[0][1]
+        cov = str("%.2f" % cov) + '%'
+        return cov
 
-def autoregressive(array, qt = 0):
+def ar(array, qt = 0):
     # makes a autoregreesion
     model = AR(array)
     model_fit = model.fit()
-    yhat = model_fit.predict(len(array), len(array)+qt)
+    yhat = model_fit.predict(len(array), len(array)+qt-1)
     
     return yhat
 
@@ -38,5 +41,5 @@ def arma(array, qt = 0):
     model = ARMA(array, (1,0))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array), len(array)+qt)
-
+    
     return yhat
