@@ -1,3 +1,4 @@
+from statsmodels.tsa.arima_model import ARIMA
 from statsmodels.tsa.arima_model import ARMA
 from statsmodels.tsa.ar_model import AR
 from scipy.stats import pearsonr
@@ -37,9 +38,18 @@ def ar(array, qt = 0):
     return yhat
 
 def arma(array, qt = 0):
-    # Autoregressive Moving Average ARMA(p,q) Model
+    # Autoregressive Moving Average ARMA(p, q) Model
     model = ARMA(array, (1,0))
+    model_fit = model.fit()
+    yhat = model_fit.predict(len(array), len(array)+qt)
+    print('len yhat: ',len(yhat))
+    return yhat
+
+def arima(array, qt = 0):
+    # Autoregressive Moving Integrated Average ARMA(p, q, d) Model
+    model = ARIMA(array, (1,0, 1))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array), len(array)+qt)
     
     return yhat
+

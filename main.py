@@ -46,7 +46,7 @@ if __name__ == '__main__':
     dfCurrency = database.read_Data('currency')
     df = database.join_data(dfCurrency, dfWowtoken)
     t_after = dt.now()
-    op = 2
+    op = 1
     size = 1000
 
     if op == 1:
@@ -98,12 +98,11 @@ if __name__ == '__main__':
     predict_values = 1000
     data1_pred = data1_nm[:-predict_values]
     data1_pred = anl.arma(data1_nm, predict_values)
-    print(data1_nm.head(10))
-    print(data1_pred.head(10))
+    #print(data1_nm.head(10))
+    #print(data1_pred.head(10))
 
-    print(type(data1_pred))
-    print(len(data1_pred))
+    #print(type(data1_pred))
+    #print(len(data1_pred))
     
-    view.plot_graph_2(data1_nm, data2_nm)
-    
+    view.plot_graph_2(data1_avg, data1_name, data2_avg, data2_name)  
 
