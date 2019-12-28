@@ -73,36 +73,40 @@ if __name__ == '__main__':
         data2 = df['Krw']
         data2_name = 'Won Sul-coreano'
 
+    # Data manipulation
+    data1_nm = database.set_Normalized_Field(data1)
+    data2_nm = database.set_Normalized_Field(data2) 
+
+    data1_avg = database.set_Avg_Field(data1_nm)
+    data2_avg = database.set_Avg_Field(data2_nm)
+
+    predict_values = 1000 
+    #data1_pred = data1_nm[:-predict_values]
+    data1_pred = anl.ar(data1_nm, predict_values)
+
+    # Printing the results
+    os.system('cls')
     print('Elapsed time: '+str(t_after - t_before))
     print('Server: '+ data1_name)
     print('Currency: '+ data2_name)
 
     print('\nReal values')
     print('Correlation:', anl.correlationIndex(data1, data2))
-    print('Covariance:', anl.covarianceIndex(data1, data2))
-
-    data1_nm = database.set_Normalized_Field(data1)
-    data2_nm = database.set_Normalized_Field(data2)  
+    print('Covariance:', anl.covarianceIndex(data1, data2))     
 
     print('\nNormalized values')
     print('Correlation:', anl.correlationIndex(data1_nm, data2_nm))
     print('Covariance:', anl.covarianceIndex(data1_nm, data2_nm))
 
-    data1_avg = database.set_Avg_Field(data1_nm)
-    data2_avg = database.set_Avg_Field(data2_nm)
-
     print('\nAvarage values')
     print('Correlation:', anl.correlationIndex(data1_avg, data2_avg))
     print('Covariance:', anl.covarianceIndex(data1_avg, data2_avg))
     
-    predict_values = 1000
-    data1_pred = data1_nm[:-predict_values]
-    data1_pred = anl.arma(data1_nm, predict_values)
     #print(data1_nm.head(10))
     #print(data1_pred.head(10))
 
     #print(type(data1_pred))
     #print(len(data1_pred))
-    
-    view.plot_graph_2(data1_avg, data1_name, data2_avg, data2_name)  
+
+    view.plot_graph_2(data1_avg, data1_pred)  
 

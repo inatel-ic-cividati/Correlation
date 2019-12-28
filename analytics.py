@@ -3,8 +3,14 @@ from statsmodels.tsa.arima_model import ARMA
 from statsmodels.tsa.ar_model import AR
 from scipy.stats import pearsonr
 import statsmodels.api as sm
+import pandas as pd
 import numpy as np
 
+def joinData(array, yhat):
+    dfNew = array.replace(array[:-len(yhat)], yhat)
+    
+    return dfNew
+    
 def correlationIndex(array1, array2):
     # correlate the two arrays
     if len(array1) != len(array2):
@@ -33,16 +39,16 @@ def ar(array, qt = 0):
     # makes a autoregreesion
     model = AR(array)
     model_fit = model.fit()
-    yhat = model_fit.predict(len(array), len(array)+qt-1)
+    yhat = model_fit.predict(len(array), len(array)+qt)
     
-    return yhat
+    dfNew = joinData(array, yhat)
+    return dfNew
 
 def arma(array, qt = 0):
     # Autoregressive Moving Average ARMA(p, q) Model
     model = ARMA(array, (1,0))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array), len(array)+qt)
-    print('len yhat: ',len(yhat))
     return yhat
 
 def arima(array, qt = 0):
