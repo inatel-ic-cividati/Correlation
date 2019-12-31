@@ -44,7 +44,7 @@ def covarianceIndex(array1, array2):
 # q is the number of lagged forecast errors in the prediction equation
 
 def ar(array, qt):
-    # Autoregressive AR(p) Model
+    # Autoregressive Model AR(p) 
     print('AUTOREGRESSIVE')
     model = AR(array)
     model_fit = model.fit(1)
@@ -54,7 +54,7 @@ def ar(array, qt):
     return dfNew
 
 def arma(array, qt):
-    # Autoregressive AR(p) Model
+    # Autoregressive oving Avarage Model ARMA(p,q) 
     model = ARMA(array, (0,1))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array)-qt,len(array)-1)
@@ -63,7 +63,7 @@ def arma(array, qt):
     return dfNew
 
 def arima(array, qt):
-    # Autoregressive AR(p) Model
+    # Autoregressive Integrated Moving Avarage Model ARIMA(p,q,d) 
     model = ARIMA(array, (0,0,1))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array)-qt,len(array)-1)
