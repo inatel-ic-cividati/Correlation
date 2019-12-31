@@ -6,8 +6,12 @@ import statsmodels.api as sm
 import pandas as pd
 import numpy as np
 
-def joinData(array, yhat):
-    dfNew = array.replace(array[:-len(yhat)], yhat)
+def joinData(array, yhat): 
+    # Joining the original data with the calculated data
+    myList = list(array[len(array)-len(yhat):].index.values)
+    yhat.index = (myList)
+    
+    dfNew = pd.concat([array[:-len(yhat)], yhat])
     
     return dfNew
     
@@ -35,27 +39,35 @@ def covarianceIndex(array1, array2):
         cov = str("%.2f" % cov) + '%'
         return cov
 
-def ar(array, qt = 0):
-    # makes a autoregreesion
+# p is the number of autoregressive terms
+# d is the number of nonseasonal differences needed for stationarity
+# q is the number of lagged forecast errors in the prediction equation
+
+def ar(array, qt):
+    # Autoregressive AR(p) Model
+    print('AUTOREGRESSIVE')
     model = AR(array)
-    model_fit = model.fit()
-    yhat = model_fit.predict(len(array), len(array)+qt)
-    
+    model_fit = model.fit(1)
+    yhat = model_fit.predict(len(array)-qt,len(array)-1)
     dfNew = joinData(array, yhat)
+
     return dfNew
 
-def arma(array, qt = 0):
-    # Autoregressive Moving Average ARMA(p, q) Model
-    model = ARMA(array, (1,0))
+def arma(array, qt):
+    # Autoregressive AR(p) Model
+    model = ARMA(array, (0,1))
     model_fit = model.fit()
-    yhat = model_fit.predict(len(array), len(array)+qt)
-    return yhat
+    yhat = model_fit.predict(len(array)-qt,len(array)-1)
+    dfNew = joinData(array, yhat)
 
-def arima(array, qt = 0):
-    # Autoregressive Moving Integrated Average ARMA(p, q, d) Model
-    model = ARIMA(array, (1,0, 1))
+    return dfNew
+
+def arima(array, qt):
+    # Autoregressive AR(p) Model
+    model = ARIMA(array, (0,0,1))
     model_fit = model.fit()
-    yhat = model_fit.predict(len(array), len(array)+qt)
-    
-    return yhat
+    yhat = model_fit.predict(len(array)-qt,len(array)-1)
+    dfNew = joinData(array, yhat)
+
+    return dfNew
 

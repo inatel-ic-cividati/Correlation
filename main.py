@@ -45,7 +45,7 @@ if __name__ == '__main__':
     dfWowtoken = database.read_Data('wowtoken')
     dfCurrency = database.read_Data('currency')
     df = database.join_data(dfCurrency, dfWowtoken)
-    t_after = dt.now()
+    
     op = 1
     size = 1000
 
@@ -80,12 +80,14 @@ if __name__ == '__main__':
     data1_avg = database.set_Avg_Field(data1_nm)
     data2_avg = database.set_Avg_Field(data2_nm)
 
-    predict_values = 1000 
-    #data1_pred = data1_nm[:-predict_values]
-    data1_pred = anl.ar(data1_nm, predict_values)
+    predict_values = 5000
+    data1_pred = anl.arima(data1_avg, predict_values)
+    print('len data_avg:',len(data1_avg))
+    print('len data_pred:',len(data1_pred))
+    #os.system('cls')
 
     # Printing the results
-    os.system('cls')
+    t_after = dt.now()
     print('Elapsed time: '+str(t_after - t_before))
     print('Server: '+ data1_name)
     print('Currency: '+ data2_name)
@@ -101,12 +103,10 @@ if __name__ == '__main__':
     print('\nAvarage values')
     print('Correlation:', anl.correlationIndex(data1_avg, data2_avg))
     print('Covariance:', anl.covarianceIndex(data1_avg, data2_avg))
+
+    print('\nCalculated')
+    print('Correlation:', anl.correlationIndex(data1_avg, data1_pred))
+    print('Covariance:', anl.covarianceIndex(data1_avg, data1_pred))   
     
-    #print(data1_nm.head(10))
-    #print(data1_pred.head(10))
-
-    #print(type(data1_pred))
-    #print(len(data1_pred))
-
-    view.plot_graph_2(data1_avg, data1_pred)  
+    view.plot_graph(data1_avg, 'True data', data1_pred, 'Data Predicted')  
 
