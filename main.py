@@ -7,38 +7,6 @@ import pandas as pd
 import view
 import os
 
-def main_not_finished():
-    # create the database with the tables
-    database.set_DataBase()
-    os.system('cls')
-
-    # get the data
-    dataUs = database.get_Data('us')
-    dataEu = database.get_Data('eu')
-    dataChina = database.get_Data('china')
-    dataKorea = database.get_Data('korea')
-    dataTaiwan = database.get_Data('taiwan')
-    os.system('cls')
-
-    data = [dataUs, dataEu, dataChina, dataKorea, dataTaiwan]
-
-    for i in data:
-        i = database.unix_datetime(i)
-        i = database.set_Avg_Field(i)
-        i = database.set_Normalized_Field(i)
-        i = i.reindex(sorted(i.columns), axis = 1)
-
-    # insert into database
-    database.insert_Table(dataUs, 'wowtoken_us')
-    database.insert_Table(dataEu, 'wowtoken_eu')
-    database.insert_Table(dataChina, 'wowtoken_china')
-    database.insert_Table(dataKorea, 'wowtoken_korea')
-    database.insert_Table(dataTaiwan, 'wowtoken_taiwan')
-    os.system('cls')
-
-    print('Your data is sotored in /data/wow.db!')
-    print(dataEu['price'])
-
 if __name__ == '__main__': 
     t_before = dt.now()
     # data collected in server
@@ -81,12 +49,9 @@ if __name__ == '__main__':
     data2_avg = database.set_Avg_Field(data2_nm)
 
     predict_values = 5000
-    data1_pred = anl.arima(data1_avg, predict_values)
-    print('len data_avg:',len(data1_avg))
-    print('len data_pred:',len(data1_pred))
-    #os.system('cls')
+    data1_pred = anl.arma(data1_avg, predict_values)
 
-    # Printing the results
+    # Showing results
     t_after = dt.now()
     print('Elapsed time: '+str(t_after - t_before))
     print('Server: '+ data1_name)
@@ -109,4 +74,3 @@ if __name__ == '__main__':
     print('Covariance:', anl.covarianceIndex(data1_avg, data1_pred))   
     
     view.plot_graph(data1_avg, 'True data', data1_pred, 'Data Predicted')  
-

@@ -45,9 +45,8 @@ def covarianceIndex(array1, array2):
 
 def ar(array, qt):
     # Autoregressive Model AR(p) 
-    print('AUTOREGRESSIVE')
     model = AR(array)
-    model_fit = model.fit(1)
+    model_fit = model.fit()
     yhat = model_fit.predict(len(array)-qt,len(array)-1)
     dfNew = joinData(array, yhat)
 
@@ -70,4 +69,3 @@ def arima(array, qt):
     dfNew = joinData(array, yhat)
 
     return dfNew
-
