@@ -39,6 +39,7 @@ def covarianceIndex(array1, array2):
         cov = str("%.2f" % cov) + '%'
         return cov
 
+# autoregression anotations
 # p is the number of autoregressive terms
 # d is the number of nonseasonal differences needed for stationarity
 # q is the number of lagged forecast errors in the prediction equation

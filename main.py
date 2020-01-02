@@ -15,27 +15,30 @@ if __name__ == '__main__':
     df = database.join_data(dfCurrency, dfWowtoken)
     
     op = 1
-    size = 1000
 
     if op == 1:
+        # Us server and Brasil currency
         data1 = df['Us']
         data1_name = 'Us'
         data2 = df['Brl']
         data2_name = 'Brasil'
 
     elif op == 2:
+        # Eu server and Europe currency
         data1 = df['Eu']
         data1_name = 'Europe'
         data2 = df['Eur']
         data2_name = 'Euro'
 
     elif op == 3:
+        # Ch server and Renminbi currency
         data1 = df['Ch']
         data1_name = 'China'
         data2 = df['Cny']
         data2_name = 'Renminbi'
     
     elif op == 4:
+        # Kr server and Won Sul-Coreano currency
         data1 = df['Kr']
         data1_name = 'Korea'
         data2 = df['Krw']
