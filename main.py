@@ -51,8 +51,8 @@ if __name__ == '__main__':
     data1_avg = database.set_Avg_Field(data1_nm)
     data2_avg = database.set_Avg_Field(data2_nm)
 
-    predict_values = 5000
-    data1_pred = anl.arma(data1_avg, predict_values)
+    predict_values = 15000
+    data1_pred = anl.arima(data1_avg, predict_values)
 
     # Showing results
     t_after = dt.now()

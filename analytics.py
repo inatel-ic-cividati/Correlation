@@ -40,6 +40,7 @@ def covarianceIndex(array1, array2):
         return cov
 
 # autoregression anotations
+# A good way to think about it is (AR, I, MA).
 # p is the number of autoregressive terms
 # d is the number of nonseasonal differences needed for stationarity
 # q is the number of lagged forecast errors in the prediction equation
@@ -64,7 +65,7 @@ def arma(array, qt):
 
 def arima(array, qt):
     # Autoregressive Integrated Moving Avarage Model ARIMA(p,q,d) 
-    model = ARIMA(array, (0,0,1))
+    model = ARIMA(array, (1,0,12))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array)-qt,len(array)-1)
     dfNew = joinData(array, yhat)
