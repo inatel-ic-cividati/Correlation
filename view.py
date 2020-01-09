@@ -3,12 +3,17 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-def plot_graph(data1, data1_label, data2, data2_label):
-    plt.plot(data1, 'black')
-    plt.plot(data2, 'red')
-    
-    plt.xlabel('Date Time')
-    plt.ylabel('Value (0 - 1)')
-    plt.legend({data1_label, data2_label})
+def plot_graph(data1, data2, server='', currency='', details =''):
+
+    fig, ax = plt.subplots()
+    # legends and colors
+    ax.plot(data2, color='blue', label='Calculated Data')
+    ax.plot(data1, color='black', label='True Data')
+    # position of the legend
+    ax.legend(loc='upper left', shadow=True, fontsize='large')
+    ax.set_title(server+' - '+currency+'\n'+details)
+    # X legend and Y legend
+    plt.xlabel('Date-Time')
+    plt.ylabel('Variation (0 - 1)')
     
     plt.show()

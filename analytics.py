@@ -45,6 +45,10 @@ def covarianceIndex(array1, array2):
 # d is the number of nonseasonal differences needed for stationarity
 # q is the number of lagged forecast errors in the prediction equation
 
+
+# VER DEPOIS https://stats.stackexchange.com/questions/44992/what-are-the-values-p-d-q-in-arima
+
+
 def ar(array, qt):
     # Autoregressive Model AR(p) 
     model = AR(array)
@@ -65,7 +69,7 @@ def arma(array, qt):
 
 def arima(array, qt):
     # Autoregressive Integrated Moving Avarage Model ARIMA(p,q,d) 
-    model = ARIMA(array, (1,0,12))
+    model = ARIMA(array, (0, 0, 1))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array)-qt,len(array)-1)
     dfNew = joinData(array, yhat)

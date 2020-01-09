@@ -73,7 +73,7 @@ def read_Data(tableName):
     conn = db.get_connection('wow_read.db')
 
     if tableName == 'wowtoken':
-        
+        # reading wowtoken table
         dataFrame = pd.read_sql_query('SELECT * FROM '+tableName+' WHERE us != ""', conn)
         
         dataFrame = str_Date(dataFrame)
@@ -87,7 +87,7 @@ def read_Data(tableName):
         return dataFrame
 
     elif tableName == 'currency':
-        
+        # reading currency table
         dataFrame = pd.read_sql_query('SELECT * FROM '+tableName+' WHERE Brl != ""', conn)
         
         dataFrame = str_Date(dataFrame)
