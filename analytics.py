@@ -58,18 +58,18 @@ def ar(array, qt):
 
     return dfNew
 
-def arma(array, qt):
-    # Autoregressive oving Avarage Model ARMA(p,q) 
-    model = ARMA(array, (0,1))
+def arma(array, qt, p = 0, q = 1):
+    # Autoregressive Moving Avarage Model ARMA(p,q) 
+    model = ARMA(array, (p, q))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array)-qt,len(array)-1)
     dfNew = joinData(array, yhat)
 
     return dfNew
 
-def arima(array, qt):
+def arima(array, qt, p = 0, q =0, d = 1):
     # Autoregressive Integrated Moving Avarage Model ARIMA(p,q,d) 
-    model = ARIMA(array, (0, 0, 1))
+    model = ARIMA(array, (p, q, d))
     model_fit = model.fit()
     yhat = model_fit.predict(len(array)-qt,len(array)-1)
     dfNew = joinData(array, yhat)

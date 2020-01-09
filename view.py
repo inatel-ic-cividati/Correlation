@@ -7,7 +7,7 @@ def plot_graph(data1, data2, server='', currency='', details =''):
 
     fig, ax = plt.subplots()
     # legends and colors
-    ax.plot(data2, color='blue', label='Calculated Data')
+    ax.plot(data2, color='blue', label='Calculated Data', ls='--')
     ax.plot(data1, color='black', label='True Data')
     # position of the legend
     ax.legend(loc='upper left', shadow=True, fontsize='large')

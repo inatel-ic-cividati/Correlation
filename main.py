@@ -14,7 +14,7 @@ if __name__ == '__main__':
     dfCurrency = database.read_Data('currency')
     df = database.join_data(dfCurrency, dfWowtoken)
     
-    op = 1
+    op = 3
 
     if op == 1:
         # Us server and Brasil currency
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     data1_avg = database.set_Avg_Field(data1_nm)
     data2_avg = database.set_Avg_Field(data2_nm)
 
-    predict_values = 5000
+    predict_values = int(len(data1_avg)/2)
     data1_pred = anl.arima(data1_avg, predict_values)
 
     # Showing results
@@ -76,6 +76,6 @@ if __name__ == '__main__':
     print('Correlation:', anl.correlationIndex(data1_avg, data1_pred))
     print('Covariance:', anl.covarianceIndex(data1_avg, data1_pred))   
     
-    details = 'Correlation: ' + anl.correlationIndex(data1_avg, data1_pred) +' \nCovariance: '+anl.covarianceIndex(data1_avg, data1_pred)
+    details = 'Correlation: ' + anl.correlationIndex(data1_avg[-predict_values:], data1_pred[-predict_values:]) +' \nCovariance: '+anl.covarianceIndex(data1_avg[-predict_values:], data1_pred[-predict_values:])
 
     view.plot_graph(data1_avg, data1_pred, data1_name, data2_name, details)  
