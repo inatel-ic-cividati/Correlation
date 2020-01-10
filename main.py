@@ -52,7 +52,7 @@ if __name__ == '__main__':
     data2_avg = database.set_Avg_Field(data2_nm)
 
     predict_values = int(len(data1_avg)/2)
-    data1_pred = anl.arima(data1_avg, predict_values)
+    data1_pred = anl.ar(data1_avg, predict_values)
 
     # Showing results
     t_after = dt.now()
@@ -76,6 +76,6 @@ if __name__ == '__main__':
     print('Correlation:', anl.correlationIndex(data1_avg, data1_pred))
     print('Covariance:', anl.covarianceIndex(data1_avg, data1_pred))   
     
-    details = 'Correlation: ' + anl.correlationIndex(data1_avg[-predict_values:], data1_pred[-predict_values:]) +' \nCovariance: '+anl.covarianceIndex(data1_avg[-predict_values:], data1_pred[-predict_values:])
+    details = 'Correlation: ' + anl.correlationIndex(data1_avg, data2_avg) +' \nCovariance: '+anl.covarianceIndex(data1_avg, data2_avg)
 
-    view.plot_graph(data1_avg, data1_pred, data1_name, data2_name, details)  
+    view.plot_graph(data1_avg, data2_avg, data1_name, data2_name, details)  

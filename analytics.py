@@ -67,7 +67,7 @@ def arma(array, qt, p = 0, q = 1):
 
     return dfNew
 
-def arima(array, qt, p = 0, q =0, d = 1):
+def arima(array, qt, p = 0, q = 0, d = 1):
     # Autoregressive Integrated Moving Avarage Model ARIMA(p,q,d) 
     model = ARIMA(array, (p, q, d))
     model_fit = model.fit()
