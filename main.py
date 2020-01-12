@@ -13,8 +13,8 @@ if __name__ == '__main__':
     dfWowtoken = database.read_Data('wowtoken')
     dfCurrency = database.read_Data('currency')
     df = database.join_data(dfCurrency, dfWowtoken)
-    
-    op = 3
+
+    op = 2
 
     if op == 1:
         # Us server and Brasil currency
@@ -45,13 +45,17 @@ if __name__ == '__main__':
         data2_name = 'Won Sul-coreano'
 
     # Data manipulation
+    predict_values = 10000
+
+    #data1 = data1[-predict_values:]
+    #data2 = data2[-predict_values:]
+
     data1_nm = database.set_Normalized_Field(data1)
     data2_nm = database.set_Normalized_Field(data2) 
 
     data1_avg = database.set_Avg_Field(data1_nm)
     data2_avg = database.set_Avg_Field(data2_nm)
 
-    predict_values = int(len(data1_avg)/2)
     data1_pred = anl.ar(data1_avg, predict_values)
 
     # Showing results

@@ -7,10 +7,10 @@ def plot_graph(data1, data2, data1_name='',data2_name='', details =''):
 
     fig, ax = plt.subplots()
     # legends and colors
-    ax.plot(data2, color='black', label=data2_name)
-    ax.plot(data1, color='red', label=data1_name)
+    ax.plot(data2, color='blue', label=data2_name) # ls=--
+    ax.plot(data1, color='black', label=data1_name)
     # position of the legend
-    ax.legend(loc='upper left', shadow=True, fontsize='large')
+    ax.legend(loc='lower left', shadow=True, fontsize='large')
     ax.set_title(data1_name+' - '+data2_name+'\n'+details)
     # X legend and Y legend
     plt.xlabel('Date-Time')
