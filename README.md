@@ -5,7 +5,7 @@ This is a scientific iniciation from [National Telecommunications Institute](ina
 This project aims to correlate two currencies values, the country currency (BRL, USD, EUR, TWD and CNY) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch, Kr and Tw), use the linear regression algorithm, and plot a graphic that show the past of curriencies and the future.
 
 ## Example
-This Graphics shows us the comparation between two datasets, the europen continent's currency (Euro) and the World of Warcraft europen server's currency (Europe). The correlation between the two graphics looks like 70.42% and the covariance is about 0.06%.
+This Graphics shows us the comparation between two datasets, the European currency (Euro) and the World of Warcraft European server's currency (Europe). The correlation between the two graphics looks like 70.42% and the covariance is about 0.06%.
 ![Graphics](https://i.imgur.com/U8mW7ts.png)
 
 ## Getting Started
