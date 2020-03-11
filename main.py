@@ -14,7 +14,7 @@ if __name__ == '__main__':
     dfCurrency = database.read_Data('currency')
     df = database.join_data(dfCurrency, dfWowtoken)
 
-    op = 2
+    op = 1
 
     if op == 1:
         # Us server and Brasil currency
@@ -46,10 +46,7 @@ if __name__ == '__main__':
 
     # Data manipulation
     predict_values = 10000
-
-    #data1 = data1[-predict_values:]
-    #data2 = data2[-predict_values:]
-
+    
     data1_nm = database.set_Normalized_Field(data1)
     data2_nm = database.set_Normalized_Field(data2) 
 
@@ -81,5 +78,6 @@ if __name__ == '__main__':
     print('Covariance:', anl.covarianceIndex(data1_avg, data1_pred))   
     
     details = 'Correlation: ' + anl.correlationIndex(data1_avg, data2_avg) +' \nCovariance: '+anl.covarianceIndex(data1_avg, data2_avg)
-
+   
     view.plot_graph(data1_avg, data2_avg, data1_name, data2_name, details)  
+    

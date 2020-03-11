@@ -149,5 +149,4 @@ def set_Normalized_Field(data):
     # normalize the data
     # divide the whole colomn by the max index
     data = data / max(data)
-
     return data

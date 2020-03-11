@@ -45,9 +45,7 @@ def covarianceIndex(array1, array2):
 # d is the number of nonseasonal differences needed for stationarity
 # q is the number of lagged forecast errors in the prediction equation
 
-
 # VER DEPOIS https://stats.stackexchange.com/questions/44992/what-are-the-values-p-d-q-in-arima
-
 
 def ar(array, qt):
     # Autoregressive Model AR(p) 
