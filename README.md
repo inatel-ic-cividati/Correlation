@@ -40,11 +40,13 @@ This code contains the functions that's able to plot our data.
 ## Libraries:
 
 The following libraries were used in the project:
+- [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/): Used for webscrapping;
+- [Matplotlib](https://matplotlib.org): Plotting 2D  graphics;
+- [Numpy](https://www.numpy.org/): NumPy is the fundamental package for scientific computing with Python;
 - [Pandas](https://pandas.pydata.org): Dataframes manipulation;
 - [Requests](https://2.python-requests.org/en/master/): Send organic, grass-fed HTTP/1.1 requests, without the need for manual labor;
-- [Numpy](https://www.numpy.org/): NumPy is the fundamental package for scientific computing with Python;
-- [Matplotlib](https://matplotlib.org): Plotting 2D  graphics;
-- [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/): Used for webscrapping.
+- [Statsmodels](https://www.statsmodels.org/stable/index.html): Module that provides classes and functions for the estimation of many different statistical models;
+- [SciPy](https://www.scipy.org/): Python-based ecosystem of open-source software for mathematics, science, and engineering.
 
 ## Authors
 ### Advisors

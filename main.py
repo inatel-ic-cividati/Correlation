@@ -1,10 +1,10 @@
 from data import database as db     # personal script
-import analytics as anl             # personal script
-import database                     # personal script
+import analytics as anl # personal script
+import database         # personal script
+import view             # personal script
 
 from datetime import datetime as dt
 import pandas as pd
-import view
 import os
 
 if __name__ == '__main__': 
