@@ -1,7 +1,7 @@
 from data import database as db     # personal script
-import analytics as anl # personal script
-import database         # personal script
-import view             # personal script
+import analytics as anl             # personal script
+import database                     # personal script
+import view                         # personal script
 
 from datetime import datetime as dt
 import pandas as pd
@@ -14,7 +14,7 @@ if __name__ == '__main__':
     dfCurrency = database.read_Data('currency')
     df = database.join_data(dfCurrency, dfWowtoken)
 
-    op = 1
+    op = 3
 
     if op == 1:
         # Us server and Brasil currency
@@ -79,5 +79,5 @@ if __name__ == '__main__':
     
     details = 'Correlation: ' + anl.correlationIndex(data1_avg, data2_avg) +' \nCovariance: '+anl.covarianceIndex(data1_avg, data2_avg)
    
-    view.plot_graph(data1_avg, data2_avg, data1_name, data2_name, details)  
+    view.plot_graph(data1_nm, data2_nm, data1_name, data2_name, details)  
     
