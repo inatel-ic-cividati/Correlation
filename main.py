@@ -19,28 +19,28 @@ if __name__ == '__main__':
     if op == 1:
         # Us server and Brasil currency
         data1 = df['Us']
-        data1_name = 'Us'
+        data1_name = 'WoW Token (Ouro)'
         data2 = df['Brl']
-        data2_name = 'Brasil'
+        data2_name = 'Câmbio (R$)'
 
     elif op == 2:
         # Eu server and Europe currency
         data1 = df['Eu']
-        data1_name = 'Europe'
+        data1_name = 'WoW Token (Ouro)'
         data2 = df['Eur']
         data2_name = 'Euro'
 
     elif op == 3:
         # Ch server and Renminbi currency
         data1 = df['Ch']
-        data1_name = 'China'
+        data1_name = 'WoW Token (Ouro)'
         data2 = df['Cny']
         data2_name = 'Renminbi'
     
     elif op == 4:
         # Kr server and Won Sul-Coreano currency
         data1 = df['Kr']
-        data1_name = 'Korea'
+        data1_name = 'WoW Token (Ouro)'
         data2 = df['Krw']
         data2_name = 'Won Sul-coreano'
 
@@ -79,5 +79,4 @@ if __name__ == '__main__':
     
     details = 'Correlation: ' + anl.correlationIndex(data1_avg, data2_avg) +' \nCovariance: '+anl.covarianceIndex(data1_avg, data2_avg)
    
-    view.plot_graph(data1_nm, data2_nm, data1_name, data2_name, details)  
-    
+    view.plot_graph(data1_avg, data2_avg, data1_name, data2_name, details)  

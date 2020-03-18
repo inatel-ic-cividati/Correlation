@@ -137,7 +137,7 @@ def str_Date(dataFrame):
 
     return dataFrame
 
-def set_Avg_Field(data, rollingNumber = 400):
+def set_Avg_Field(data, rollingNumber = 144):
     # create average field in the dataframe
     # search more this function
     data = data.rolling(rollingNumber).mean()
@@ -149,5 +149,5 @@ def set_Normalized_Field(data):
     # normalize the data
     # divide the whole colomn by the max index
     data = (data - min(data)) / (max(data) - min(data))
-    data_scaled
+
     return data
