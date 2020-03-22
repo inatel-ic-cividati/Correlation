@@ -2,7 +2,7 @@
 This is a scientific iniciation from [National Telecommunications Institute](https://inatel.br/home/) titled "Development a Financial Time Series Forecasting Tool in a Massively Multiplayer Online Role-Playing Game".
 
 ## Abstract
-This project aims to correlate two currencies values, the country currency (BRL, USD, EUR, TWD and CNY) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch, Kr and Tw), use the linear regression algorithm, and plot a graphic that show the past of curriencies and the future.
+This project aims to correlate two currencies values, the country currency (BRL, EUR, CNY and KRW) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch and Kr), use the linear regression algorithm, and plot a graphic that show the past of curriencies and the future.
 
 ## Example
 This Graphics shows us the comparation between two datasets, the China's real currency (Renminbi - Cny) and the World of Warcraft, WoW Token.
