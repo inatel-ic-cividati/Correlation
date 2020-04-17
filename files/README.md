@@ -1,1 +1,1 @@
-# Archives used in tsft/README
+# Archives used in documentation of this project
