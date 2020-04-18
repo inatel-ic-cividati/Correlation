@@ -1,5 +1,5 @@
 # Time Series Forecasting Tool
-This is a scientific iniciation from [National Telecommunications Institute](https://inatel.br/home/) titled "Correlation Analysis between Real Currency Fluctuations and Virtual Currency of an MMORPG".
+This is a scientific iniciation from [National Telecommunications Institute](https://inatel.br/home/) titled "Correlation Analysis between Real Currency Fluctuations and Virtual Currency of an MMORPG". You can download the full documentation [here](https://github.com/Cividati/tsft/blob/master/files/article.pdf).
 
 ## Abstract
 This work proposes the collection of data from the MMORPG World of Warcraft’s virtual currency and real-world exchange rates variations in order to perform a correlation analysis, to identify similarities and differences between these contexts and to point out possible explanations for such relationships. 
