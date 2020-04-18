@@ -1,11 +1,18 @@
 # Time Series Forecasting Tool
-This is a scientific iniciation from [National Telecommunications Institute](https://inatel.br/home/) titled "Development a Financial Time Series Forecasting Tool in a Massively Multiplayer Online Role-Playing Game".
+This is a scientific iniciation from [National Telecommunications Institute](https://inatel.br/home/) titled "Correlation Analysis between Real Currency Fluctuations and Virtual Currency of an MMORPG".
 
 ## Abstract
-This project aims to correlate two currencies values, the country currency (BRL, EUR, CNY and KRW) and the World of Warcraft realm currency named wowtoken (Us, Eu, Ch and Kr), use the linear regression algorithm, and plot a graphic that show the past of curriencies and the future.
+This work proposes the collection of data from the MMORPG World of Warcraft’s virtual currency and real-world exchange rates variations in order to perform a correlation analysis, to identify similarities and differences between these contexts and to point out possible explanations for such relationships. 
+
+## Directory Structure
+This project is comprised of the following directories:
+
+- code: Contains all codes used for correlate and analysis;
+- data: Contains our data;
+- files: Contains pictures and documentations.
 
 ## Example
-This Graphics shows us the comparation between two datasets, the China's real currency (Renminbi - Cny) and the World of Warcraft, WoW Token.
+This Graphics shows us the correlation between two datasets, the China's real currency (Renminbi - Cny) and the World of Warcraft, WoW Token.
 
 ![Graphics](https://raw.githubusercontent.com/Cividati/tsft/master/files/plot_ch_rmb.png)
 
