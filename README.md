@@ -7,12 +7,12 @@ This work proposes the collection of data from the MMORPG World of Warcraft’s 
 ## Directory Structure
 This project is comprised of the following directories:
 
-- **code**: Contains all codes used for correlate and analysis;
-- **codes/data**: Contains our data;
-- **files**: Contains pictures and documentations.
+- **code**: Contains all codes used for correlate, analysis and plot;
+- **codes/data**: Contains our dataset collected previously;
+- **files**: Contains pictures and documentations archives.
 
 ## Example
-This Graphics shows us the correlation between two datasets, the China's real currency (Renminbi - Cny) and the World of Warcraft, WoW Token.
+This Graphics shows us the correlation between two datasets, the China's real currency (Renminbi - Cny) and the World of Warcraft coin, WoW Token.
 
 ![Graphics](https://raw.githubusercontent.com/Cividati/tsft/master/files/plot_ch_rmb.png)
 
