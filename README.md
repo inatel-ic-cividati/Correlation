@@ -34,7 +34,7 @@ First of all, we are using the [Python 3.7.4](https://www.python.org/downloads/r
 ```pip install -r requirements.txt```
 
 ### Running
-You can run the project with the [main.py](https://github.com/Cividati/IC-wow/blob/master/main.py), for a while it isn't plotting any graphics, but it's collecting the whole data needed for it.
+You can run the whole project with the [main.py](https://github.com/Cividati/IC-wow/blob/master/main.py), for a while it isn't plotting any graphics.
 
 ```python main.py```
 
@@ -58,7 +58,7 @@ This code contains the functions that's able to plot our data.
 
 The following libraries were used in the project:
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/): Used for webscrapping;
-- [Matplotlib](https://matplotlib.org): Plotting 2D  graphics;
+- [Matplotlib](https://matplotlib.org): Plotting 2D graphics;
 - [Numpy](https://www.numpy.org/): NumPy is the fundamental package for scientific computing with Python;
 - [Pandas](https://pandas.pydata.org): Dataframes manipulation;
 - [Requests](https://2.python-requests.org/en/master/): Send organic, grass-fed HTTP/1.1 requests, without the need for manual labor;
