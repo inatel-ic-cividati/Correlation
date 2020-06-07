@@ -9,7 +9,8 @@ This project is comprised of the following directories:
 
 - **code**: Contains all codes used for correlate, analysis and plot;
 - **codes/data**: Contains our dataset collected previously;
-- **files**: Contains pictures and documentations archives.
+- **files**: Contains pictures and documentations archives;
+- **server**: Contains all stuffs used to config the server.
 
 ## Example
 This Graphics shows us the correlation between two datasets, the China's real currency in red(Renminbi - Cny) and the World of Warcraft coin, WoW Token in blue.
