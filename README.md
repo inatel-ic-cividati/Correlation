@@ -12,11 +12,11 @@ This project is comprised of the following directories:
 - **files**: Contains pictures and documentations archives.
 
 ## Example
-This Graphics shows us the correlation between two datasets, the China's real currency (Renminbi - Cny) and the World of Warcraft coin, WoW Token.
+This Graphics shows us the correlation between two datasets, the China's real currency in red(Renminbi - Cny) and the World of Warcraft coin, WoW Token in blue.
 
 ![Graphics](https://raw.githubusercontent.com/Cividati/tsft/master/files/plot_ch_rmb.png)
 
-Comparing and correlating each real currency with each respective realm, we got the follow correlation table. Where the coluns show the method used for correlation.
+Comparing and correlating each real currency with each respective realm, we got the follow correlation table. Where the columns ```Pearson, Kendall and Spearman``` show the method used for correlation.
 
 Region     | Currency | Pearson | Kendall | Spearman |
 ------------|-------|---------|---------|----------|
