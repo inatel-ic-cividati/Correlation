@@ -1,4 +1,4 @@
-# Time Series Forecasting Tool
+# Correlation Analysis between Real Currency Fluctuations and Virtual Currency of an MMORPG
 This is a scientific iniciation from [National Telecommunications Institute](https://inatel.br/home/) titled "Correlation Analysis between Real Currency Fluctuations and Virtual Currency of an MMORPG". You can download the full documentation [here](https://github.com/Cividati/tsft/blob/master/files/article.pdf).
 
 ## Abstract
