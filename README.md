@@ -68,8 +68,8 @@ The following libraries were used in the project:
 
 ## Authors
 ### Advisors
-- [Marcelo V. C. Aragão] (https://github.com/marcelovca90)
-- [Renzo Mesquita]
+- [Marcelo V. C. Aragão](https://github.com/marcelovca90)
+- Renzo Mesquita
 
 ### Students
 - [Rubens Cividati](https://github.com/cividati)
