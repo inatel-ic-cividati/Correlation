@@ -4,14 +4,6 @@ This is a scientific iniciation from [National Telecommunications Institute](htt
 ## Abstract
 This work proposes the collection of data from the MMORPG World of Warcraft’s virtual currency and real-world exchange rates variations in order to perform a correlation analysis, to identify similarities and differences between these contexts and to point out possible explanations for such relationships. 
 
-## Directory Structure
-This project is comprised of the following directories:
-
-- **code**: Contains all codes used for correlate, analysis and plot;
-- **codes/data**: Contains our dataset collected previously;
-- **files**: Contains pictures and documentations archives;
-- **server**: Contains all stuffs used to config the server.
-
 ## Example
 This Graphics shows us the correlation between two datasets, the China's real currency in red(Renminbi - Cny) and the World of Warcraft coin, WoW Token in blue.
 
@@ -38,6 +30,14 @@ First of all, we are using the [Python 3.7.4](https://www.python.org/downloads/r
 You can run the whole project with the [main.py](https://github.com/Cividati/IC-wow/blob/master/main.py), for a while it isn't plotting any graphics.
 
 ```python main.py```
+
+### Directory Structure
+This project is comprised of the following directories:
+
+- **code**: Contains all codes used for correlate, analysis and plot;
+- **codes/data**: Contains our dataset collected previously;
+- **files**: Contains pictures and documentations archives;
+- **server**: Contains all stuffs used to config the server.
 
 ### Scripts
 - [database.py](https://github.com/Cividati/IC-wow/blob/master/database.py): 
