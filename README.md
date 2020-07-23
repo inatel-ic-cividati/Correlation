@@ -70,6 +70,7 @@ The following libraries were used in the project:
 ### Advisors
 - [Marcelo V. C. Aragão](https://github.com/marcelovca90)
 - Renzo Mesquita
+- [Phyllipe Lima](https://github.com/phillima)
 
 ### Students
 - [Rubens Cividati](https://github.com/cividati)
