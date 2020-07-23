@@ -69,14 +69,14 @@ The following libraries were used in the project:
 ## Authors
 ### Advisors
 - [Marcelo V. C. Aragão](https://github.com/marcelovca90)
-- Renzo Mesquita
 - [Phyllipe Lima](https://github.com/phillima)
+- Renzo Mesquita
 
 ### Students
 - [Rubens Cividati](https://github.com/cividati)
 
 ### Contributors
 - [Daniel Pontello](https://github.com/danielpontello)
-- Isabella Capistrano
-- [Henrique B. Lang](https://github.com/henriqueblang)
 - [Gabriel Claret](https://github.com/claret1)
+- [Henrique B. Lang](https://github.com/henriqueblang)
+- Isabella Capistrano
