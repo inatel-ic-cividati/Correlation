@@ -1,5 +1,5 @@
 # Correlation Analysis between Real Currency Fluctuations and Virtual Currency of an MMORPG
-This repository is a scientific iniciation from [National Telecommunications Institute](https://inatel.br/home/) located in Santa Rita do Sapucaí, Brazil titled "Correlation Analysis between Real Currency Fluctuations and Virtual Currency of an MMORPG". You can download the full documentation [here](https://github.com/Cividati/tsft/blob/master/files/article.pdf).
+This repository contains code about a scientific iniciation from [National Telecommunications Institute](https://inatel.br/home/) located in Santa Rita do Sapucaí, Brazil titled "Correlation Analysis between Real Currency Fluctuations and Virtual Currency of an MMORPG". You can download the full documentation [here](https://github.com/Cividati/tsft/blob/master/files/article.pdf).
 
 ## Abstract
 This work proposes the collection of data from the MMORPG World of Warcraft’s virtual currency and real-world exchange rates variations in order to perform a correlation analysis, to identify similarities and differences between these contexts and to point out possible explanations for such relationships. 
