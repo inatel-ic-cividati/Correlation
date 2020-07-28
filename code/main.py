@@ -1,4 +1,3 @@
-from data import database as db     # personal script
 import analytics as anl             # personal script
 import database                     # personal script
 import view                         # personal script
@@ -10,8 +9,8 @@ import os
 if __name__ == '__main__': 
     t_before = dt.now()
     # data collected in server
-    dfWowtoken = database.read_Data('wowtoken')
-    dfCurrency = database.read_Data('currency')
+    dfWowtoken = database.read_Csv('wowtoken')
+    dfCurrency = database.read_Csv('currency')
     df = database.join_data(dfCurrency, dfWowtoken)
 
     op = 3

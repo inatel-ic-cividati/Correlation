@@ -1,4 +1,3 @@
-from data import database as db # personal script
 from datetime import datetime
 import pandas as pd
 import numpy as np
@@ -8,10 +7,15 @@ import array
 import json
 import os
 
+def get_connection(db_name):
+
+    db_url = os.path.dirname(__file__) + '/'
+    return sqlite3.connect(db_url + db_name)
+
 def set_DataBase():
     # creating the databse 
     try:
-        conn = db.get_connection('wow.db')
+        conn = get_connection('wow.db')
         cursor = conn.cursor()
 
         params = ['us', 'eu', 'china', 'korea', 'taiwan']
@@ -56,7 +60,7 @@ def get_Data(wowtoken):
 
     # with no internet connection
     except:
-        path = db.get_db_path() 
+        path = os.path.dirname(__file__)
 
         # load the data from file wowtoken_COUNTRY.json
         with open(path+'/wowtoken_'+wowtoken+'.json', 'r') as f:
@@ -68,9 +72,13 @@ def get_Data(wowtoken):
     data = data[['time', 'price']]
     return data
 
+def read_Csv(name):
+    uri = 'https://raw.githubusercontent.com/cividati-inatel-ic/Data/master/data/'
+    return pd.read_csv(uri+name+'.csv')
+
 def read_Data(tableName):
     # read the data from the database 'wow_read.db'
-    conn = db.get_connection('wow_read.db')
+    conn = get_connection('wow_read.db')
 
     if tableName == 'wowtoken':
         # reading wowtoken table
@@ -102,7 +110,7 @@ def read_Data(tableName):
 
 def insert_Table(dataFrame, wowtokenTable):
     # insert dataframe into wowtokne table
-    conn = db.get_connection('wow.db')
+    conn = get_connection('wow.db')
     dataFrame.to_sql(wowtokenTable, conn, if_exists='replace')
 
 def unix_datetime(dataFrame):
