@@ -42,7 +42,7 @@ This project is comprised of the following directories:
 
 - [gdrive](https://github.com/prasmussen/gdrive): Upload automatically the database to my google drive.
 
-## Libraries:
+## Libraries
 
 The following libraries were used in the project:
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/): Used for webscrapping;
