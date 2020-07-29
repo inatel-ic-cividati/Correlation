@@ -4,7 +4,7 @@ Here you can find all code used for this project.
 
 ### Files
 
-- [article.pdf](article.pdf): The full article of the project/
+- [article.pdf](article.pdf): The full article of the project;
 
 - [plot_ch_rmb.png](plot_ch_rmb.png): Graph about China's wowtoken value and Reminbi currency;
 
