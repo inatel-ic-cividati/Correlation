@@ -1,6 +1,6 @@
 # Files
 
-Here you can find all code used for this project.
+Here you can find all files used for documentation.
 
 ### Files
 
