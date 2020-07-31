@@ -129,7 +129,7 @@ def str_Float(dataFrame, columnName):
     dataFrame[columnName] = dataFrame[columnName].str.replace(',','.')
     # convert the type of dataFrame['columnName] to flaot
     dataFrame[columnName] = dataFrame[columnName].astype('float')
-    
+     
     return dataFrame
 
 def str_Date(dataFrame):

@@ -19,7 +19,7 @@ def joinData(array, yhat):
     dfNew = pd.concat([array[:-len(yhat)], yhat])
     
     return dfNew
-    
+     
 def pearson(a1, a2):
     c_index = pearsonr(a1, a2)[0]
     c_index = "%.2f" % round(c_index, 2)

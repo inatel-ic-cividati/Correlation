@@ -53,7 +53,7 @@ if __name__ == '__main__':
                 an.spearman(wowtoken[1], currency[1]),
                 an.spearman(wowtoken[2], currency[2]),
                 an.spearman(wowtoken[3], currency[3])])
-
+    
     # Showing results
     t_after = dt.now()
     #print('Elapsed time: '+str(t_after - t_before))
