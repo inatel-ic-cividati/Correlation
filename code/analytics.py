@@ -23,17 +23,17 @@ def joinData(array, yhat):
 def pearson(a1, a2):
     c_index = pearsonr(a1, a2)[0]
     c_index = "%.2f" % round(c_index, 2)
-    return c_index
+    return float(c_index)
 
 def kendall(a1, a2):
     c_index = kendalltau(a1, a2)[0]
     c_index = "%.2f" % round(c_index, 2)
-    return c_index
+    return float(c_index)
 
 def spearman(a1, a2):
     c_index = spearmanr(a1, a2)[0]
     c_index = "%.2f" % round(c_index, 2)
-    return c_index
+    return float(c_index)
 
 def correlationIndex(array1, array2):
     # correlate the two arrays
