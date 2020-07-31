@@ -1,7 +1,12 @@
 from statsmodels.tsa.arima_model import ARIMA
 from statsmodels.tsa.arima_model import ARMA
 from statsmodels.tsa.ar_model import AR
+
+# Correlation models
 from scipy.stats import pearsonr
+from scipy.stats import spearmanr
+from scipy.stats import kendalltau
+
 import statsmodels.api as sm
 import pandas as pd
 import numpy as np
@@ -15,6 +20,21 @@ def joinData(array, yhat):
     
     return dfNew
     
+def pearson(a1, a2):
+    c_index = pearsonr(a1, a2)[0]
+    c_index = "%.2f" % round(c_index, 2)
+    return c_index
+
+def kendall(a1, a2):
+    c_index = kendalltau(a1, a2)[0]
+    c_index = "%.2f" % round(c_index, 2)
+    return c_index
+
+def spearman(a1, a2):
+    c_index = spearmanr(a1, a2)[0]
+    c_index = "%.2f" % round(c_index, 2)
+    return c_index
+
 def correlationIndex(array1, array2):
     # correlate the two arrays
     if len(array1) != len(array2):

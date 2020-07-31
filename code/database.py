@@ -145,7 +145,7 @@ def str_Date(dataFrame):
 
     return dataFrame
 
-def set_Avg_Field(data, rollingNumber = 144):
+def set_Avg_Field(data, rollingNumber = 2):
     # create average field in the dataframe
     # search more this function
     data = data.rolling(rollingNumber).mean()

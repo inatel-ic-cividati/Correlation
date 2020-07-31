@@ -1,81 +1,69 @@
-import analytics as anl             # personal script
-import database                     # personal script
-import view                         # personal script
+import analytics as an             # personal script
+import database  as db             # personal script
+import view      as vw             # personal script
 
 from datetime import datetime as dt
 import pandas as pd
+import numpy as np
 import os
 
 if __name__ == '__main__': 
     t_before = dt.now()
     # data collected in server
-    dfWowtoken = database.read_Csv('wowtoken')
-    dfCurrency = database.read_Csv('currency')
-    df = database.join_data(dfCurrency, dfWowtoken)
+    dfWowtoken = db.read_Csv('d_wowtoken')
+    dfCurrency = db.read_Csv('d_currency')
+    df_original = db.join_data(dfCurrency, dfWowtoken)
 
-    op = 3
+    df_original['date'] = df_original['date_x']
+    df_original['date'] = pd.to_datetime(df_original['date'], infer_datetime_format=True)
 
-    if op == 1:
-        # Us server and Brasil currency
-        data1 = df['Us']
-        data1_name = 'WoW Token (Ouro)'
-        data2 = df['Brl']
-        data2_name = 'Câmbio (R$)'
-
-    elif op == 2:
-        # Eu server and Europe currency
-        data1 = df['Eu']
-        data1_name = 'WoW Token (Ouro)'
-        data2 = df['Eur']
-        data2_name = 'Euro'
-
-    elif op == 3:
-        # Ch server and Renminbi currency
-        data1 = df['Ch']
-        data1_name = 'WoW Token (Ouro)'
-        data2 = df['Cny']
-        data2_name = 'Renminbi'
+    df_original.set_index(df_original['date'], inplace=True)
+    df_original.drop(columns=['date_x','date_y'], axis=1, inplace=True)
     
-    elif op == 4:
-        # Kr server and Won Sul-Coreano currency
-        data1 = df['Kr']
-        data1_name = 'WoW Token (Ouro)'
-        data2 = df['Krw']
-        data2_name = 'Won Sul-coreano'
+    # A ideia é usarmos de 01/07/19 até 30/06/20
+    df = df_original['2019/07/19':'2020/06/30']
+    #print(df['date']['2019/03/27'])
 
-    # Data manipulation
-    predict_values = 10000
+    wowtoken = np.array([
+                db.set_Normalized_Field(df['Us']),
+                db.set_Normalized_Field(df['Eu']),
+                db.set_Normalized_Field(df['Ch']),
+                db.set_Normalized_Field(df['Kr'])])
+
+    currency = np.array([
+                db.set_Normalized_Field(df['Brl']),
+                db.set_Normalized_Field(df['Eur']),
+                db.set_Normalized_Field(df['Cny']),
+                db.set_Normalized_Field(df['Krw'])])
+
+    p = np.array([
+                an.pearson(wowtoken[0], currency[0]),
+                an.pearson(wowtoken[1], currency[1]),
+                an.pearson(wowtoken[2], currency[2]),
+                an.pearson(wowtoken[3], currency[3])])
     
-    data1_nm = database.set_Normalized_Field(data1)
-    data2_nm = database.set_Normalized_Field(data2) 
+    k = np.array([
+                an.kendall(wowtoken[0], currency[0]),
+                an.kendall(wowtoken[1], currency[1]),
+                an.kendall(wowtoken[2], currency[2]),
+                an.kendall(wowtoken[3], currency[3])])
 
-    data1_avg = database.set_Avg_Field(data1_nm)
-    data2_avg = database.set_Avg_Field(data2_nm)
-
-    data1_pred = anl.ar(data1_avg, predict_values)
+    s = np.array([
+                an.spearman(wowtoken[0], currency[0]),
+                an.spearman(wowtoken[1], currency[1]),
+                an.spearman(wowtoken[2], currency[2]),
+                an.spearman(wowtoken[3], currency[3])])
 
     # Showing results
     t_after = dt.now()
-    print('Elapsed time: '+str(t_after - t_before))
-    print('Server: '+ data1_name)
-    print('Currency: '+ data2_name)
-
-    print('\nReal values')
-    print('Correlation:', anl.correlationIndex(data1, data2))
-    print('Covariance:', anl.covarianceIndex(data1, data2))     
-
-    print('\nNormalized values')
-    print('Correlation:', anl.correlationIndex(data1_nm, data2_nm))
-    print('Covariance:', anl.covarianceIndex(data1_nm, data2_nm))
-
-    print('\nAvarage values')
-    print('Correlation:', anl.correlationIndex(data1_avg, data2_avg))
-    print('Covariance:', anl.covarianceIndex(data1_avg, data2_avg))
-
-    print('\nCalculated')
-    print('Correlation:', anl.correlationIndex(data1_avg, data1_pred))
-    print('Covariance:', anl.covarianceIndex(data1_avg, data1_pred))   
-    
-    details = 'Correlation: ' + anl.correlationIndex(data1_avg, data2_avg) +' \nCovariance: '+anl.covarianceIndex(data1_avg, data2_avg)
-   
-    view.plot_graph(data1_avg, data2_avg, data1_name, data2_name, details)  
+    #print('Elapsed time: '+str(t_after - t_before))
+    print('start at:',df['date'][0])
+    print('end at:',df['date'].iloc[-1])
+    print('time interval:',df['date'].iloc[-1] - df['date'][0])
+    print( '| Region  | Currency | Pearson | Kendall | Spearman |')
+    print(f'| America |    BRL   |  {p[0]}   {k[0]}     {s[0]}   ')
+    print(f'| Europe  |    Eur   |  {p[1]}   {k[1]}     {s[1]}   ')
+    print(f'| China   |    Cny   |  {p[2]}   {k[2]}     {s[2]}   ')
+    print(f'| Corea   |    Krw   |  {p[3]}   {k[3]}     {s[3]}   ')
+ 
+    #view.plot_graph(data1_avg, data2_avg, data1_name, data2_name, details)  
