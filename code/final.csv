@@ -1,0 +1,5 @@
+,Region,Currency,Pearson,Kendall,Spearman
+0,America,BRL,-0.69,-0.37,-0.49
+1,Europe,Eur,-0.01,0.01,0.03
+2,China,Cny,0.57,0.4,0.6
+3,Corea,Krw,-0.7,-0.44,-0.65

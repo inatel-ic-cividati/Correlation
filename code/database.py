@@ -73,7 +73,8 @@ def get_Data(wowtoken):
     return data
 
 def read_Csv(name):
-    uri = 'https://raw.githubusercontent.com/cividati-inatel-ic/Data/master/data/'
+    ## ARRUMAR ESSA FUNÇÃO PRA BUSCAR OS ARQUIVOS LOCALMENTE
+    uri = '../../data/data/'
     return pd.read_csv(uri+name+'.csv')
 
 def read_Data(tableName):
