@@ -35,8 +35,7 @@ You can run the whole project with the [main.py](https://github.com/Cividati/IC-
 This project is comprised of the following directories:
 
 - **code**: Contains all codes used for correlate and plot;
-- **files**: Contains pictures and documentations archives;
-- **server**: Contains all stuffs used to config the server.
+- **files**: Contains pictures and documentations archives.
 
 ## Auxiliar tools
 
