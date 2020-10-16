@@ -1,4 +1,4 @@
-# Code
+# Correlation/code
 
 Here you can find all code used for this project.
 
