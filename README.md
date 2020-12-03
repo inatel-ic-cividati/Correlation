@@ -53,16 +53,13 @@ The following libraries were used in the project:
 - [Statsmodels](https://www.statsmodels.org/stable/index.html): Module that provides classes and functions for the estimation of many different statistical models.
 
 ## Authors
-### Advisors
-- [Marcelo V. C. Aragão](https://github.com/marcelovca90)
-- [Phyllipe Lima](https://github.com/phillima)
-- Renzo Mesquita
-
-### Students
-- [Rubens Cividati](https://github.com/cividati)
-
-### Contributors
-- [Daniel Pontello](https://github.com/danielpontello)
-- [Gabriel Claret](https://github.com/claret1)
-- [Henrique B. Lang](https://github.com/henriqueblang)
-- Isabella Capistrano
+| Name                 	| Role        	| Github 	|
+|----------------------	|-------------	|--------	|
+| Rubens Cividati      	| Author      	|  [Github](https://github.com/cividati)  	|
+| Marcelo V. C. Aragão 	| Advisor     	|  [Github](https://github.com/marcelovca90)      	|
+| Phyllipe Lima        	| Advisor     	|  [Github](https://github.com/phillima)      	|
+| Renzo Mesquita       	| Advisor     	|  -      	|
+| Daniel Pontello      	| Contributor 	|  [Github](https://github.com/danielpontello)      	|
+| Gabriel Claret       	| Contributor 	|  [Github](https://github.com/claret1)      	|
+| Henrique B. Lang     	| Contributor 	|  [Github](https://github.com/henriqueblang)      	|
+| Isabella Capistrano  	| Contributor 	|   -     	|
