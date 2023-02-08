@@ -57,9 +57,7 @@ The following libraries were used in the project:
 |----------------------	|-------------	|--------	|
 | Rubens Cividati      	| Author      	|  [Github](https://github.com/cividati)  	|
 | Marcelo V. C. Aragão 	| Advisor     	|  [Github](https://github.com/marcelovca90)      	|
-| Phyllipe Lima        	| Advisor     	|  [Github](https://github.com/phillima)      	|
-| Renzo Mesquita       	| Advisor     	|  -      	|
-| Daniel Pontello      	| Contributor 	|  [Github](https://github.com/danielpontello)      	|
-| Gabriel Claret       	| Contributor 	|  [Github](https://github.com/claret1)      	|
-| Henrique B. Lang     	| Contributor 	|  [Github](https://github.com/henriqueblang)      	|
 | Isabella Capistrano  	| Contributor 	|   -     	|
+
+## Presentation
+[Incitel XXXII 2020](https://www.youtube.com/watch?v=dULSdxkL1xc)
